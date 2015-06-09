@@ -1,0 +1,82 @@
+/*
+* The stylesheet for the JM Breaking News Widget.
+*
+* Author: Jacob Martella
+* Package: JM Breaking News
+* Version: 1.0
+*/
+.breaking-news-box {
+	width: 100%;
+	float: left;
+	position: relative;
+	margin: auto;
+	margin-bottom: 10px;
+	height: 79px;
+}
+
+.breaking-news-left {
+	width: 30%;
+	float: left;
+	position: relative;
+	background-color: red;
+	text-align: center;
+	height: 79px;
+}
+
+.breaking-news-left-h2 {
+	font-family: Arial;
+	font-size: 28px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #FFFFFF;
+}
+
+.breaking-news-right {
+	width: 70%;
+	float: right;
+	position: relative;
+	background-color: #000000;
+	padding-left: 15px;
+	height: 100%;
+	padding-top: 5px;
+	height: 79px;
+}
+
+.breaking-news-right-h2 {
+	font-family: "Arial Narrow";
+	font-size: 28px;
+	color: #FFFFFF;
+	margin: 0px;
+	font-weight: 100;
+}
+
+.breaking-news-right-h2 a, .breaking-news-right-h2 a:link, .breaking-news-right-h2 a:visited {
+	color: #FFFFFF;
+}
+
+.breaking-news-right-h2 a:hover {
+	text-decoration: underline;
+}
+
+/* Styles for the breaking news banner at smaller screen sizes */
+@media only screen and (max-width: 700px) {
+	.breaking-news-box {
+		height: 100% !important;
+	}
+
+	.breaking-news-left {
+		width: 100% !important;
+		float: left;
+		position: relative;
+		height: 100% !important;
+	}
+
+	.breaking-news-right {
+		width: 100% !important;
+		float: left !important;
+		position: relative !important;
+		height: 100% !important;
+		padding-bottom: 10px;
+		text-align: center;
+	}
+}
