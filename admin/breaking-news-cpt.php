@@ -6,7 +6,7 @@
 *
 * @author Jacob Martella
 * @package JM Breaking News
-* @version 1.0
+* @version 1.1
 */
 function jm_breaking_news_cpt() {
 	$labels = array(

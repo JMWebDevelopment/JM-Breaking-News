@@ -3,7 +3,7 @@
 *
 * Author: Jacob Martella
 * Package: JM Breaking News
-* Version: 1.0
+* Version: 1.1
 */
 .breaking-news-box {
 	width: 100%;
@@ -18,36 +18,39 @@
 	width: 30%;
 	float: left;
 	position: relative;
-	background-color: red;
+	background-color: #C42B2B;
 	text-align: center;
 	height: 79px;
+	box-sizing: border-box;
 }
 
 .breaking-news-left-h2 {
-	font-family: Arial;
+	font-family: 'Oswald';
 	font-size: 28px;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #FFFFFF;
+	margin: 19px 23.24px;
 }
 
 .breaking-news-right {
 	width: 70%;
 	float: right;
 	position: relative;
-	background-color: #000000;
+	background-color: #262626;
 	padding-left: 15px;
 	height: 100%;
 	padding-top: 5px;
 	height: 79px;
+	box-sizing: border-box;
 }
 
 .breaking-news-right-h2 {
-	font-family: "Arial Narrow";
+	font-family: 'Lato';
 	font-size: 28px;
 	color: #FFFFFF;
 	margin: 0px;
-	font-weight: 100;
+	font-weight: 300;
 }
 
 .breaking-news-right-h2 a, .breaking-news-right-h2 a:link, .breaking-news-right-h2 a:visited {

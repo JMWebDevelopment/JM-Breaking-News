@@ -6,7 +6,7 @@
 *
 * @author Jacob Martella
 * @package JM Breaking News
-* @version 1.0
+* @version 1.1
 */
 //* Add the meta box
 function jm_breaking_news_add_box() {
@@ -20,7 +20,7 @@ function breaking_news_meta_box_cb() {
 	$values = get_post_custom($post->ID);
 	if (isset($values['jm_breaking_news_link'])) { $link = $values['jm_breaking_news_link'][0]; } else { $link = ''; }
 	if (isset($values['jm_breaking_news_target'])) { $target = $values['jm_breaking_news_target'][0]; } else { $target = ''; }
-	if (isset($values['jm_breaking_news_limit'])) { $limit = $values['jm_breaking_news_limit'][0]; } else { $limit = ''; }
+	if (isset($values['jm_breaking_news_limit'])) { $limit = $values['jm_breaking_news_limit'][0]; } else { $limit = 1; }
 
 	wp_nonce_field('jm_breaking_news_nonce', 'meta_box_nonce');
 

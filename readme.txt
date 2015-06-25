@@ -3,7 +3,7 @@ Contributors: ArenaPigskin
 Tags: breaking news, banner
 Requires at least: 4.0
 Tested up to: 4.2.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -28,4 +28,14 @@ The banner has a width of 100%, so it will fit into any size container; however,
 2. The breaking news banner in action on the web site.
 
 == Changelog ==
-1.0 - Initial Release
+
+= 1.1 =
+- Added: default value of 1 for the time limit.
+- Added: wp_reset_query at the end of the jm_breaking_news function to keep the banner from interfering with the page query.
+- Changed: the left side font to Oswald.
+- Changed: the right side font to Lato.
+- Changed: the left side background to #C42B2B.
+- Changed: the right side background to #252525.
+
+= 1.0 =
+- Initial Release
