@@ -3,7 +3,7 @@
 * Plugin Name: JM Breaking News
 * Plugin URI: http://www.jacobmartella.com/jm-breaking-news/
 * Description: Displays a breaking news banner, similar to that of CNN, with custom text and link on the webpage via a custom post type.
-* Version: 1.1
+* Version: 1.2
 * Author: Jacob Martella
 * Author URI: http://www.jacobmartella.com
 * License: GPLv3
@@ -47,10 +47,21 @@ add_action('wp_enqueue_scripts', 'jm_breaking_news_style');
 function jm_breaking_news_admin_style() {
 	global $typenow;
 	if ($typenow == 'jm_breaking_news') {
-		wp_enqueue_style('jm_breaking_news_admin_styles', plugin_dir_url(__FILE__) . '/css/breaking-news-admin-style.css');
+		wp_enqueue_style('jm_breaking_news_admin_styles', plugin_dir_url(__FILE__) . 'css/breaking-news-admin-style.css');
 	}
 }
 add_action('admin_print_styles', 'jm_breaking_news_admin_style');
+
+/**
+* Loads the script for the breaking news custom post type
+*/
+function jm_breaking_news_admin_scripts() {
+	global $typenow;
+	if ($typenow == 'jm_breaking_news') {
+		wp_enqueue_script('jm_breaking_news_admin_script', plugin_dir_url(__FILE__) . 'js/breaking-news-show-hide-fields.js');
+	}
+}
+add_action('admin_enqueue_scripts', 'jm_breaking_news_admin_scripts');
 
 /**
 * Returns the HTML for the breaking news banner
@@ -76,13 +87,18 @@ function jm_breaking_news() {
 		} else {
 			$target = '';
 		}
+		if (get_post_meta(get_the_ID(), 'jm_breaking_news_in_ex', true) == 1) {
+			$link = get_post_meta(get_the_ID(), 'jm_breaking_news_internal_link', true);
+		} else {
+			$link = get_post_meta(get_the_ID(), 'jm_breaking_news_link', true);
+		}
 		if ($difference < $limit) {
 			$html .= '<section class="breaking-news-box">';
 			$html .= '<div class="breaking-news-left">';
 			$html .= '<h2 class="breaking-news-left-h2">' . __('Breaking News', 'jm-breaking-news') . '</h2>';
 			$html .= '</div>';
 			$html .= '<div class="breaking-news-right">';
-			$html .= '<h2 class="breaking-news-right-h2"><a href="' . get_post_meta(get_the_ID(), 'jm_breaking_news_link', true) . '" ' . $target .'>' . get_the_title() . '</a></h2>';
+			$html .= '<h2 class="breaking-news-right-h2"><a href="' . $link . '" ' . $target .'>' . get_the_title() . '</a></h2>';
 			$html .= '</div>';
 			$html .= '</section>';
 		}
