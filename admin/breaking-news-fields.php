@@ -6,7 +6,7 @@
 *
 * @author Jacob Martella
 * @package JM Breaking News
-* @version 1.2
+* @version 1.3
 */
 //* Add the meta box
 function jm_breaking_news_add_box() {
