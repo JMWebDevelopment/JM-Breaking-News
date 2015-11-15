@@ -1,0 +1,154 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JM Breaking News\n"
+"POT-Creation-Date: 2015-06-06 14:05-0600\n"
+"PO-Revision-Date: 2015-06-06 14:29-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: jm-breaking-news.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/breaking-news-contextual-help.php:13
+msgid "Breaking News Help"
+msgstr "Últimas Noticias Ayuda"
+
+#: admin/breaking-news-contextual-help.php:15
+msgid "Title"
+msgstr "Título"
+
+#: admin/breaking-news-contextual-help.php:15
+msgid "The title is the text that is shown in the breaking news banner."
+msgstr ""
+"El título es el texto que se muestra en el banner noticias de última hora."
+
+#: admin/breaking-news-contextual-help.php:16
+msgid "Link"
+msgstr "Enlace"
+
+#: admin/breaking-news-contextual-help.php:16
+msgid ""
+"Add the link to the breaking news story. It can be from your site or from "
+"another site."
+msgstr ""
+"Añadir el enlace a la noticia de última hora. Puede ser de su sitio o de "
+"otro sitio."
+
+#: admin/breaking-news-contextual-help.php:17
+msgid "Target"
+msgstr "Objetivo"
+
+#: admin/breaking-news-contextual-help.php:17
+msgid "Check this box to open the link in a new window."
+msgstr "Marque esta casilla para abrir el enlace en una nueva ventana."
+
+#: admin/breaking-news-contextual-help.php:18
+msgid "Time Limit"
+msgstr "Límite de tiempo"
+
+#: admin/breaking-news-contextual-help.php:18
+msgid "Set a time limit for the breaking news banner to show."
+msgstr ""
+"Establecer un límite de tiempo para el banner noticias de última hora para "
+"mostrar."
+
+#: admin/breaking-news-cpt.php:13 admin/breaking-news-cpt.php:24
+#: jm-breaking-news.php:78
+msgid "Breaking News"
+msgstr "Últimas Noticias"
+
+#: admin/breaking-news-cpt.php:14
+msgid "Breaking News Post"
+msgstr "Noticias de última hora del anuncio"
+
+#: admin/breaking-news-cpt.php:15
+msgid "Add New"
+msgstr "Agregar nuevo"
+
+#: admin/breaking-news-cpt.php:16
+msgid "Add New Breaking News Item"
+msgstr "Añadir nuevo rompiendo noticia"
+
+#: admin/breaking-news-cpt.php:17
+msgid "Edit Breaking News Item"
+msgstr "Editar Nuevo últimas noticias de artículo"
+
+#: admin/breaking-news-cpt.php:18
+msgid "New Breaking News Item"
+msgstr "Nueva Noticias de última hora de artículo"
+
+#: admin/breaking-news-cpt.php:19
+msgid "All Breaking News Items"
+msgstr "Todas las últimas noticias de artículo"
+
+#: admin/breaking-news-cpt.php:20
+msgid "View Breaking News Item"
+msgstr "Ver noticias de última hora de artículo"
+
+#: admin/breaking-news-cpt.php:21
+msgid "Search Breaking News"
+msgstr "Búsqueda noticias"
+
+#: admin/breaking-news-cpt.php:22
+msgid "No Breaking News Found"
+msgstr "Sin noticias de actualidad encontrado"
+
+#: admin/breaking-news-cpt.php:23
+msgid "No Breaking News in Trash"
+msgstr "Sin noticias de actualidad encontrado en la basura"
+
+#: admin/breaking-news-cpt.php:28
+msgid "Post type to put breaking news text and a link."
+msgstr "Tipo Publicar poner romper texto de la noticia y un enlace."
+
+#: admin/breaking-news-fields.php:13
+msgid "Breaking News Info"
+msgstr "Rompiendo información de noticias"
+
+#: admin/breaking-news-fields.php:28
+msgid "Breaking News Link"
+msgstr "Romper enlace de noticias"
+
+#: admin/breaking-news-fields.php:33
+msgid "Display Link in New Window"
+msgstr "Pantalla Enlace en ventana nueva"
+
+#: admin/breaking-news-fields.php:38
+msgid "Time Limit to Show Breaking News"
+msgstr "Tiempo límite para Mostrar Noticias de última hora"
+
+#. Plugin Name of the plugin/theme
+msgid "JM Breaking News"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.jacobmartella.com/jm-breaking-news-plugin"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Displays a breaking news banner, similar to that of CNN, with custom text "
+"and link on the webpage via a custom post type."
+msgstr ""
+"Muestra un banner noticias de última hora, similar a la de CNN, con el texto "
+"de encargo y enlace en la página web a través de un tipo de mensaje "
+"personalizado."
+
+#. Author of the plugin/theme
+msgid "Jacob Martella"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.jacobmartella.com"
+msgstr ""

@@ -1,0 +1,18 @@
+/*
+* The stylesheet for the breaking news custom post type JM Breaking News Widget.
+*
+* Author: Jacob Martella
+* Package: JM Breaking News
+* Version: 1.3.1
+*/
+#jm-breaking-news-meta label {
+	margin-right: 5px;
+}
+
+#jm_breaking_news_external {
+	margin-right: 10px;
+}
+
+#jm_breaking_news_link {
+	width: 80%;
+}
