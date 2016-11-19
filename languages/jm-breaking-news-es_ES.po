@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Breaking News\n"
-"POT-Creation-Date: 2015-06-06 14:05-0600\n"
-"PO-Revision-Date: 2015-06-06 14:29-0600\n"
+"POT-Creation-Date: 2016-04-23 12:43-0500\n"
+"PO-Revision-Date: 2016-04-23 12:56-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: jm-breaking-news.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -34,37 +34,70 @@ msgstr ""
 "El título es el texto que se muestra en el banner noticias de última hora."
 
 #: admin/breaking-news-contextual-help.php:16
-msgid "Link"
-msgstr "Enlace"
+msgid "Internal/External Link"
+msgstr "Enlace interno y externo"
 
 #: admin/breaking-news-contextual-help.php:16
 msgid ""
-"Add the link to the breaking news story. It can be from your site or from "
-"another site."
+"This radio box option allows you to select whether the link is internal or "
+"external. The appropriate option will then appear below."
 msgstr ""
-"Añadir el enlace a la noticia de última hora. Puede ser de su sitio o de "
-"otro sitio."
+"Esta opción de la caja de radio le permite seleccionar si el enlace es "
+"interno o externo. La opción correspondiente aparecerá a continuación."
+
+#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:42
+msgid "External Link"
+msgstr "Enlace Externo"
 
 #: admin/breaking-news-contextual-help.php:17
+msgid ""
+"This text box is where you can add the external link, if there is one, to "
+"the breaking news box."
+msgstr ""
+"Este cuadro de texto es donde puede Agregar el enlace externo, si lo "
+"hubiera, a la caja de noticias de última hora."
+
+#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:44
+msgid "Internal Link"
+msgstr "Enlace Interno"
+
+#: admin/breaking-news-contextual-help.php:18
+msgid ""
+"This select menu allows you to select a post on your site to link to in the "
+"breaking news box."
+msgstr ""
+"Seleccione este menú le permite seleccionar un post en su sitio para enlazar "
+"en el cuadro de noticias de última hora."
+
+#: admin/breaking-news-contextual-help.php:19
 msgid "Target"
 msgstr "Objetivo"
 
-#: admin/breaking-news-contextual-help.php:17
+#: admin/breaking-news-contextual-help.php:19
 msgid "Check this box to open the link in a new window."
 msgstr "Marque esta casilla para abrir el enlace en una nueva ventana."
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Time Limit"
 msgstr "Límite de tiempo"
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Set a time limit for the breaking news banner to show."
 msgstr ""
 "Establecer un límite de tiempo para el banner noticias de última hora para "
 "mostrar."
 
+#: admin/breaking-news-contextual-help.php:21
+msgid "Background Color"
+msgstr "Color de Fondo"
+
+#: admin/breaking-news-contextual-help.php:21
+msgid "Set a background color for the \"Breaking News\" half of the banner."
+msgstr ""
+"Establecer un color de fondo para “Breaking News” la mitad de la bandera."
+
 #: admin/breaking-news-cpt.php:13 admin/breaking-news-cpt.php:24
-#: jm-breaking-news.php:78
+#: breaking-news-widget.php:60 jm-breaking-news.php:102
 msgid "Breaking News"
 msgstr "Últimas Noticias"
 
@@ -116,24 +149,37 @@ msgstr "Tipo Publicar poner romper texto de la noticia y un enlace."
 msgid "Breaking News Info"
 msgstr "Rompiendo información de noticias"
 
-#: admin/breaking-news-fields.php:28
+#: admin/breaking-news-fields.php:50 admin/breaking-news-fields.php:56
 msgid "Breaking News Link"
 msgstr "Romper enlace de noticias"
 
-#: admin/breaking-news-fields.php:33
+#: admin/breaking-news-fields.php:70
 msgid "Display Link in New Window"
 msgstr "Pantalla Enlace en ventana nueva"
 
-#: admin/breaking-news-fields.php:38
+#: admin/breaking-news-fields.php:75
 msgid "Time Limit to Show Breaking News"
 msgstr "Tiempo límite para Mostrar Noticias de última hora"
+
+#: admin/breaking-news-fields.php:80
+msgid "Background Color for \"Breaking News\" section"
+msgstr "Color de fondo para la sección de “Noticias”"
+
+#: breaking-news-widget.php:17
+msgid "JM Breaking News Widget"
+msgstr "Widget de noticias de última hora de JM"
+
+#: jm-breaking-news.php:129
+#, php-format
+msgid "<link rel=\"%1$s\" type=\"%2$s\" href=\"%3$s\" />"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "JM Breaking News"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.jacobmartella.com/jm-breaking-news-plugin"
+msgid "http://www.jacobmartella.com/jm-breaking-news/"
 msgstr ""
 
 #. Description of the plugin/theme

@@ -1,22 +1,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Breaking News\n"
-"POT-Creation-Date: 2015-06-06 14:13-0600\n"
-"PO-Revision-Date: 2015-06-06 14:20-0600\n"
+"POT-Creation-Date: 2016-04-23 12:36-0500\n"
+"PO-Revision-Date: 2016-04-23 12:38-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: jm-breaking-news.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -35,38 +35,72 @@ msgstr ""
 "wird."
 
 #: admin/breaking-news-contextual-help.php:16
-msgid "Link"
-msgstr "Link"
+msgid "Internal/External Link"
+msgstr "Externe/interne Link"
 
 #: admin/breaking-news-contextual-help.php:16
 msgid ""
-"Add the link to the breaking news story. It can be from your site or from "
-"another site."
+"This radio box option allows you to select whether the link is internal or "
+"external. The appropriate option will then appear below."
 msgstr ""
-"Fügen Sie den Link, um die aktuelle Nachricht. Es kann von Ihrer Website "
-"oder von einer anderen Seite."
+"Dieser Radio-Feld-Option können Sie auswählen, ob der Link intern oder "
+"extern ist. Die entsprechende Option erscheint dann unten."
+
+#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:42
+msgid "External Link"
+msgstr "Externer Link"
 
 #: admin/breaking-news-contextual-help.php:17
+msgid ""
+"This text box is where you can add the external link, if there is one, to "
+"the breaking news box."
+msgstr ""
+"Dieses Feld ist, wo Sie den externen Hyperlink hinzufügen können, sofern "
+"vorhanden, im Feld Nachrichten brechend."
+
+#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:44
+msgid "Internal Link"
+msgstr "Interner Link"
+
+#: admin/breaking-news-contextual-help.php:18
+msgid ""
+"This select menu allows you to select a post on your site to link to in the "
+"breaking news box."
+msgstr ""
+"In diesem Menü auswählen können Sie einen Beitrag auf Ihrer Website "
+"verknüpfen Sie mit im Feld Nachrichten brechend auswählen."
+
+#: admin/breaking-news-contextual-help.php:19
 msgid "Target"
 msgstr "Ziel"
 
-#: admin/breaking-news-contextual-help.php:17
+#: admin/breaking-news-contextual-help.php:19
 msgid "Check this box to open the link in a new window."
 msgstr ""
 "Aktivieren Sie diese Option, um den obigen Link in einem neuen Fenster zu "
 "öffnen"
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Time Limit"
 msgstr "Zeitlimit"
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Set a time limit for the breaking news banner to show."
 msgstr ""
 "Legen Sie ein Zeitlimit für das bahnbrechende Neuigkeiten Banner zu zeigen."
 
+#: admin/breaking-news-contextual-help.php:21
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: admin/breaking-news-contextual-help.php:21
+msgid "Set a background color for the \"Breaking News\" half of the banner."
+msgstr ""
+"Legen Sie einer Hintergrundfarbe für die “Breaking News” die Hälfte des "
+"Banners."
+
 #: admin/breaking-news-cpt.php:13 admin/breaking-news-cpt.php:24
-#: jm-breaking-news.php:78
+#: breaking-news-widget.php:60 jm-breaking-news.php:102
 msgid "Breaking News"
 msgstr "Eilmeldung"
 
@@ -84,15 +118,15 @@ msgstr "Fügen Sie neuer Newseintrag zu brechen hinzu"
 
 #: admin/breaking-news-cpt.php:17
 msgid "Edit Breaking News Item"
-msgstr "bearbeiten das Nachrichten Artikel"
+msgstr "Bearbeiten das Nachrichten Artikel"
 
 #: admin/breaking-news-cpt.php:18
 msgid "New Breaking News Item"
-msgstr "neuen aktuellen Nachrichten Artikel"
+msgstr "Neuen Aktuellen Nachrichten Artikel"
 
 #: admin/breaking-news-cpt.php:19
 msgid "All Breaking News Items"
-msgstr "alle aktuellen Nachrichten Artikel"
+msgstr "Alle Aktuellen Nachrichten Artikel"
 
 #: admin/breaking-news-cpt.php:20
 msgid "View Breaking News Item"
@@ -118,24 +152,37 @@ msgstr "Post-Typ, aktuelle Nachrichten Text und einen Link zu setzen."
 msgid "Breaking News Info"
 msgstr "Eilmeldung Informationen"
 
-#: admin/breaking-news-fields.php:28
+#: admin/breaking-news-fields.php:50 admin/breaking-news-fields.php:56
 msgid "Breaking News Link"
 msgstr "Eilmeldung Link"
 
-#: admin/breaking-news-fields.php:33
+#: admin/breaking-news-fields.php:70
 msgid "Display Link in New Window"
 msgstr "Display Link in neuem Fenster"
 
-#: admin/breaking-news-fields.php:38
+#: admin/breaking-news-fields.php:75
 msgid "Time Limit to Show Breaking News"
 msgstr "Frist, zeigen aktuelle Nachrichten"
+
+#: admin/breaking-news-fields.php:80
+msgid "Background Color for \"Breaking News\" section"
+msgstr "Hintergrundfarbe für “Breaking News”-Bereich"
+
+#: breaking-news-widget.php:17
+msgid "JM Breaking News Widget"
+msgstr "JM Breaking News Widget"
+
+#: jm-breaking-news.php:129
+#, php-format
+msgid "<link rel=\"%1$s\" type=\"%2$s\" href=\"%3$s\" />"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "JM Breaking News"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.jacobmartella.com/jm-breaking-news-plugin"
+msgid "http://www.jacobmartella.com/jm-breaking-news/"
 msgstr ""
 
 #. Description of the plugin/theme

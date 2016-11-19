@@ -1,22 +1,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Breaking News\n"
-"POT-Creation-Date: 2015-06-06 14:06-0600\n"
-"PO-Revision-Date: 2015-06-06 14:11-0600\n"
+"POT-Creation-Date: 2016-04-23 10:50-0500\n"
+"PO-Revision-Date: 2016-04-23 10:52-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: jm-breaking-news.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -31,41 +31,71 @@ msgstr "Titolo"
 #: admin/breaking-news-contextual-help.php:15
 msgid "The title is the text that is shown in the breaking news banner."
 msgstr ""
-"Il titolo è il testo che viene mostrato nella bandiera di notizie di "
-"rottura."
+"Il titolo è il testo che viene mostrato nella bandiera di notizie di rottura."
 
 #: admin/breaking-news-contextual-help.php:16
-msgid "Link"
-msgstr "Collegamento"
+msgid "Internal/External Link"
+msgstr "Interno/Esterno"
 
 #: admin/breaking-news-contextual-help.php:16
 msgid ""
-"Add the link to the breaking news story. It can be from your site or from "
-"another site."
+"This radio box option allows you to select whether the link is internal or "
+"external. The appropriate option will then appear below."
 msgstr ""
-"Aggiungere il link per la storia di breaking news. Può essere dal sito o "
-"da un altro sito."
+"Questa opzione di casella radio consente di selezionare se il collegamento è "
+"interno o esterno. L’opzione appropriata verrà quindi visualizzato sotto."
+
+#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:42
+msgid "External Link"
+msgstr "Link esterno"
 
 #: admin/breaking-news-contextual-help.php:17
+msgid ""
+"This text box is where you can add the external link, if there is one, to "
+"the breaking news box."
+msgstr ""
+"Questa casella di testo è dove è possibile aggiungere il collegamento "
+"esterno, se c’è uno, alla casella di ultime notizie."
+
+#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:44
+msgid "Internal Link"
+msgstr "Link interno"
+
+#: admin/breaking-news-contextual-help.php:18
+msgid ""
+"This select menu allows you to select a post on your site to link to in the "
+"breaking news box."
+msgstr ""
+"Selezionare il menu consente di selezionare un post sul tuo sito a cui "
+"collegarsi nella casella ultime notizie."
+
+#: admin/breaking-news-contextual-help.php:19
 msgid "Target"
 msgstr "Obbiettivo"
 
-#: admin/breaking-news-contextual-help.php:17
+#: admin/breaking-news-contextual-help.php:19
 msgid "Check this box to open the link in a new window."
 msgstr "Selezionare questa casella per aprire il link in una nuova finestra."
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Time Limit"
 msgstr "Limite di tempo"
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Set a time limit for the breaking news banner to show."
 msgstr ""
-"Impostare un limite di tempo per la bandiera di notizie di rottura "
-"mostrare."
+"Impostare un limite di tempo per la bandiera di notizie di rottura mostrare."
+
+#: admin/breaking-news-contextual-help.php:21
+msgid "Background Color"
+msgstr "Colore Sfondo"
+
+#: admin/breaking-news-contextual-help.php:21
+msgid "Set a background color for the \"Breaking News\" half of the banner."
+msgstr "Impostare un colore di sfondo per il “Breaking News” metà del banner."
 
 #: admin/breaking-news-cpt.php:13 admin/breaking-news-cpt.php:24
-#: jm-breaking-news.php:78
+#: breaking-news-widget.php:60 jm-breaking-news.php:102
 msgid "Breaking News"
 msgstr "Ultime Notizie"
 
@@ -117,24 +147,37 @@ msgstr "Tipo mettere ultime notizie testo e link del post."
 msgid "Breaking News Info"
 msgstr "Ultime Notizie Informazioni"
 
-#: admin/breaking-news-fields.php:28
+#: admin/breaking-news-fields.php:50 admin/breaking-news-fields.php:56
 msgid "Breaking News Link"
 msgstr "Ultime Notizie Collegamento"
 
-#: admin/breaking-news-fields.php:33
+#: admin/breaking-news-fields.php:70
 msgid "Display Link in New Window"
 msgstr "Visualizza il collegamento in una nuova finestra"
 
-#: admin/breaking-news-fields.php:38
+#: admin/breaking-news-fields.php:75
 msgid "Time Limit to Show Breaking News"
 msgstr "Limite di tempo per mostrare le ultime notizie"
+
+#: admin/breaking-news-fields.php:80
+msgid "Background Color for \"Breaking News\" section"
+msgstr "Colore di sfondo per la sezione “Breaking News”"
+
+#: breaking-news-widget.php:17
+msgid "JM Breaking News Widget"
+msgstr "Ultime Notizie Aiuto"
+
+#: jm-breaking-news.php:130
+#, php-format
+msgid "<link rel=\"%1$s\" type=\"%2$s\" href=\"%3$s\" />"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "JM Breaking News"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.jacobmartella.com/jm-breaking-news-plugin"
+msgid "http://www.jacobmartella.com/jm-breaking-news/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -142,9 +185,9 @@ msgid ""
 "Displays a breaking news banner, similar to that of CNN, with custom text "
 "and link on the webpage via a custom post type."
 msgstr ""
-"Consente di visualizzare un banner di ultime notizie, simile a quello "
-"della CNN, con testo personalizzato e link sulla pagina Web tramite un "
-"tipo di post personalizzato."
+"Consente di visualizzare un banner di ultime notizie, simile a quello della "
+"CNN, con testo personalizzato e link sulla pagina Web tramite un tipo di "
+"post personalizzato."
 
 #. Author of the plugin/theme
 msgid "Jacob Martella"

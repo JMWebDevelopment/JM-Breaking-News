@@ -1,23 +1,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Breaking News\n"
-"POT-Creation-Date: 2015-06-06 14:27-0600\n"
-"PO-Revision-Date: 2015-06-06 14:29-0600\n"
+"POT-Creation-Date: 2016-04-23 12:59-0500\n"
+"PO-Revision-Date: 2016-04-23 13:02-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: jm-breaking-news.php\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
@@ -34,36 +34,67 @@ msgid "The title is the text that is shown in the breaking news banner."
 msgstr "Название является текст, отображаемый в заголовке ломать новости."
 
 #: admin/breaking-news-contextual-help.php:16
-msgid "Link"
-msgstr "Ссылка"
+msgid "Internal/External Link"
+msgstr "Внутренние/внешние"
 
 #: admin/breaking-news-contextual-help.php:16
 msgid ""
-"Add the link to the breaking news story. It can be from your site or from "
-"another site."
+"This radio box option allows you to select whether the link is internal or "
+"external. The appropriate option will then appear below."
 msgstr ""
-"Добавьте ссылку на последние новости история. Это может быть из вашего "
-"сайта или другого сайта."
+"Этот параметр радио позволяет выбрать ли связь является внутренним или "
+"внешним. Затем соответствующий вариант появится ниже."
+
+#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:42
+msgid "External Link"
+msgstr "Внешняя ссылка"
 
 #: admin/breaking-news-contextual-help.php:17
+msgid ""
+"This text box is where you can add the external link, if there is one, to "
+"the breaking news box."
+msgstr ""
+"Это текстовое поле является, где вы можете добавить внешнюю ссылку, если "
+"есть один, чтобы поле последние новости."
+
+#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:44
+msgid "Internal Link"
+msgstr "Внутренняя ссылка"
+
+#: admin/breaking-news-contextual-help.php:18
+msgid ""
+"This select menu allows you to select a post on your site to link to in the "
+"breaking news box."
+msgstr ""
+"Выберите это меню позволяет выбрать сообщение на вашем сайте ссылку в поле "
+"последние новости."
+
+#: admin/breaking-news-contextual-help.php:19
 msgid "Target"
 msgstr "Где открывать?"
 
-#: admin/breaking-news-contextual-help.php:17
+#: admin/breaking-news-contextual-help.php:19
 msgid "Check this box to open the link in a new window."
 msgstr "Установите этот флажок, чтобы открыть ссылку в новом окне."
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Time Limit"
 msgstr "Лимит времени"
 
-#: admin/breaking-news-contextual-help.php:18
+#: admin/breaking-news-contextual-help.php:20
 msgid "Set a time limit for the breaking news banner to show."
-msgstr ""
-"Задайте ограничение времени для ломать новости баннер, чтобы показать."
+msgstr "Задайте ограничение времени для ломать новости баннер, чтобы показать."
+
+#: admin/breaking-news-contextual-help.php:21
+msgid "Background Color"
+msgstr "Цвет фона"
+
+#: admin/breaking-news-contextual-help.php:21
+msgid "Set a background color for the \"Breaking News\" half of the banner."
+msgstr "Задайте цвет фона для «Последние новости» половина баннера."
 
 #: admin/breaking-news-cpt.php:13 admin/breaking-news-cpt.php:24
-#: jm-breaking-news.php:78
+#: breaking-news-widget.php:60 jm-breaking-news.php:102
 msgid "Breaking News"
 msgstr "Горячие новости"
 
@@ -115,24 +146,37 @@ msgstr "Сообщение типа положить ломать новости
 msgid "Breaking News Info"
 msgstr "Главные новости информация"
 
-#: admin/breaking-news-fields.php:28
+#: admin/breaking-news-fields.php:50 admin/breaking-news-fields.php:56
 msgid "Breaking News Link"
 msgstr "Главные новости ссылки"
 
-#: admin/breaking-news-fields.php:33
+#: admin/breaking-news-fields.php:70
 msgid "Display Link in New Window"
 msgstr "Отобразить ссылку в новом окне"
 
-#: admin/breaking-news-fields.php:38
+#: admin/breaking-news-fields.php:75
 msgid "Time Limit to Show Breaking News"
 msgstr "Срок, чтобы показать, последние новости"
+
+#: admin/breaking-news-fields.php:80
+msgid "Background Color for \"Breaking News\" section"
+msgstr "Цвет фона для раздела «Последние новости»"
+
+#: breaking-news-widget.php:17
+msgid "JM Breaking News Widget"
+msgstr "JM ломать Новости виджетов"
+
+#: jm-breaking-news.php:129
+#, php-format
+msgid "<link rel=\"%1$s\" type=\"%2$s\" href=\"%3$s\" />"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "JM Breaking News"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.jacobmartella.com/jm-breaking-news-plugin"
+msgid "http://www.jacobmartella.com/jm-breaking-news/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -140,8 +184,8 @@ msgid ""
 "Displays a breaking news banner, similar to that of CNN, with custom text "
 "and link on the webpage via a custom post type."
 msgstr ""
-"Отображает последние новости баннер, похож на CNN, с пользовательский "
-"текст и ссылку на веб-странице через таможенный пост типа."
+"Отображает последние новости баннер, похож на CNN, с пользовательский текст "
+"и ссылку на веб-странице через таможенный пост типа."
 
 #. Author of the plugin/theme
 msgid "Jacob Martella"

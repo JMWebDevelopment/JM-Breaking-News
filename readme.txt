@@ -2,12 +2,8 @@
 Contributors: ArenaPigskin
 Tags: breaking news, banner
 Requires at least: 4.0
-Tested up to: 4.3
-<<<<<<< HEAD
-Stable tag: 1.3.1
-=======
-Stable tag: 1.3
->>>>>>> 21de9e7c946fc867bebf78d1109e8237a3fa9dce
+Tested up to: 4.7
+Stable tag: 1.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -32,13 +28,25 @@ The banner has a width of 100%, so it will fit into any size container; however,
 2. The breaking news banner in action on the web site.
 
 == Changelog ==
+= 1.7 =
+- Tested to work with WordPress 4.7.
 
-<<<<<<< HEAD
+= 1.6 =
+- Added: Breaking News shortcode to put a breaking news banner inside a post.
+- Tested to work with WordPress 4.6.
+
+= 1.5 =
+- Added: Breaking News widget that allows users to display the breaking news banner in the sidebar.
+- Added: Translations for French, German, Italian, Russian and Spanish.
+- Tested to work with WordPress 4.5.
+
+= 1.4 =
+- Added option to change background color of "Breaking News" half of the banner.
+- Tested to work with WordPress 4.4
+
 = 1.3.1 =
 - Removed 'http:' from the functions to enqueue the Google fonts
 
-=======
->>>>>>> 21de9e7c946fc867bebf78d1109e8237a3fa9dce
 = 1.3 =
 - Tested to work with WordPress 4.3
 - Fixed vertical margin for "Breaking News" text to even it out.
