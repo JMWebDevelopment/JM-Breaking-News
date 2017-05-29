@@ -35,6 +35,9 @@ function breaking_news_meta_box_cb() {
 	if ( isset( $values[ 'jm_breaking_news_target' ] ) ) { $target = $values[ 'jm_breaking_news_target' ][ 0 ]; } else { $target = ''; }
 	if ( isset( $values[ 'jm_breaking_news_limit' ] ) ) { $limit = $values[ 'jm_breaking_news_limit' ][ 0 ]; } else { $limit = 1; }
 	if ( isset( $values[ 'jm_breaking_news_color' ] ) ) { $color = $values[ 'jm_breaking_news_color' ][ 0 ]; } else { $color = '#C42B2B'; }
+    if ( isset( $values[ 'jm_breaking_news_background_color' ] ) ) { $background_color = $values[ 'jm_breaking_news_background_color' ][ 0 ]; } else { $background_color = '#262626'; }
+    if ( isset( $values[ 'jm_breaking_news_text_color' ] ) ) { $text_color = $values[ 'jm_breaking_news_text_color' ][ 0 ]; } else { $text_color = '#ffffff'; }
+    if ( isset( $values[ 'jm_breaking_news_news_text_color' ] ) ) { $news_text_color = $values[ 'jm_breaking_news_news_text_color' ][ 0 ]; } else { $news_text_color = '#ffffff'; }
 
 	wp_nonce_field( 'jm_breaking_news_nonce', 'meta_box_nonce' );
 
@@ -80,6 +83,21 @@ function breaking_news_meta_box_cb() {
 	echo '<label for="jm_breaking_news_color">' . __( 'Background Color for "Breaking News" section', 'jm-breaking-news' ) . '</label>';
 	echo '<input type="text" name="jm_breaking_news_color" id="jm_breaking_news_color" value="' . $color .'" />';
 	echo '</p>';
+
+    echo '<p>';
+    echo '<label for="jm_breaking_news_background_color">' . __( 'Background Color for body section', 'jm-breaking-news' ) . '</label>';
+    echo '<input type="text" name="jm_breaking_news_background_color" id="jm_breaking_news_background_color" value="' . $background_color .'" />';
+    echo '</p>';
+
+    echo '<p>';
+    echo '<label for="jm_breaking_news_text_color">' . __( 'Text Color for "Breaking News" section', 'jm-breaking-news' ) . '</label>';
+    echo '<input type="text" name="jm_breaking_news_text_color" id="jm_breaking_news_text_color" value="' . $text_color .'" />';
+    echo '</p>';
+
+    echo '<p>';
+    echo '<label for="jm_breaking_news_news_text_color">' . __( 'Text Color for body section', 'jm-breaking-news' ) . '</label>';
+    echo '<input type="text" name="jm_breaking_news_news_text_color" id="jm_breaking_news_news_text_color" value="' . $news_text_color .'" />';
+    echo '</p>';
 }
 
 if ( ! function_exists( 'check_color' ) ) {
@@ -124,11 +142,22 @@ function jm_breaking_news_save_box( $post_id ) {
 		update_post_meta( $post_id, 'jm_breaking_news_internal_link', wp_filter_nohtml_kses( $_POST[ 'jm_breaking_news_internal_link' ] ) );
 	}
 
-	$background = trim( $_POST[ 'jm_breaking_news_color' ] );
-    $background = strip_tags( stripslashes( $background ) );
+    $color = strip_tags( stripslashes( trim( $_POST[ 'jm_breaking_news_color' ] ) ) );
+    $background_color = strip_tags( stripslashes( trim( $_POST[ 'jm_breaking_news_background_color' ] ) ) );
+    $text_color = strip_tags( stripslashes( trim( $_POST[ 'jm_breaking_news_text_color' ] ) ) );
+    $news_text_color = strip_tags( stripslashes( trim( $_POST[ 'jm_breaking_news_news_text_color' ] ) ) );
 
-    if( TRUE === check_color( $background ) ) {
-		update_post_meta( $post_id, 'jm_breaking_news_color', $background );
+    if( TRUE === check_color( $color ) ) {
+		update_post_meta( $post_id, 'jm_breaking_news_color', $color );
+    }
+    if( TRUE === check_color( $background_color ) ) {
+        update_post_meta( $post_id, 'jm_breaking_news_background_color', $background_color );
+    }
+    if( TRUE === check_color( $text_color ) ) {
+        update_post_meta( $post_id, 'jm_breaking_news_text_color', $text_color );
+    }
+    if( TRUE === check_color( $news_text_color ) ) {
+        update_post_meta( $post_id, 'jm_breaking_news_news_text_color', $news_text_color );
     }
 }
 add_action( 'save_post', 'jm_breaking_news_save_box' );

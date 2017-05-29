@@ -12,4 +12,7 @@ jQuery( document ).ready( function () {
         }
     } );
     jQuery( '#jm_breaking_news_color' ).wpColorPicker();
+    jQuery( '#jm_breaking_news_background_color' ).wpColorPicker();
+    jQuery( '#jm_breaking_news_text_color' ).wpColorPicker();
+    jQuery( '#jm_breaking_news_news_text_color' ).wpColorPicker();
 } );
