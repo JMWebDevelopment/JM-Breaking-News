@@ -14,8 +14,25 @@
 }
 
 #jm_breaking_news_link {
-	width: 80%;
+	width: 100%;
 }
+
+#jm_breaking_news_internal_link {
+	width: 100%;
+}
+
 .wp-color-result {
 	margin-bottom: -3px;
+}
+
+.jm-breaking-news-fields {
+	width: 100%;
+}
+
+.jm-breaking-news-fields td {
+	padding: 5px 0;
+}
+
+.jm-breaking-news-fields td:first-child {
+	width: 33%;
 }

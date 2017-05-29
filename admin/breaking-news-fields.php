@@ -41,23 +41,24 @@ function breaking_news_meta_box_cb() {
 
 	wp_nonce_field( 'jm_breaking_news_nonce', 'meta_box_nonce' );
 
-	echo '<p>';
-	echo '<label for="jm_breaking_news_in_ex">' . __( 'External Link', 'jm-breaking-news' ) . '</label>';
+	echo '<table class="jm-breaking-news-fields">';
+	echo '<tr>';
+	echo '<td><label for="jm_breaking_news_in_ex">' . __( 'External Link', 'jm-breaking-news' ) . '</label>';
 	echo '<input type="radio" name="jm_breaking_news_in_ex" id="jm_breaking_news_external" value="0"' . checked( $in_ex, 0, false ) . ' />';
 	echo '<label for="jm_breaking_news_in_ex">' . __('Internal Link', 'jm-breaking-news') . '</label>';
-	echo '<input type="radio" name="jm_breaking_news_in_ex" id="jm_breaking_news_internal" value="1"' . checked( $in_ex, 1, false ) . ' />';
-	echo '</p>';
+	echo '<input type="radio" name="jm_breaking_news_in_ex" id="jm_breaking_news_internal" value="1"' . checked( $in_ex, 1, false ) . ' /></td>';
+	echo '</tr>';
 
 	if ( $in_ex == 1 ) { $ex_display_style = 'style="display:none;"'; } else { $ex_display_style = ''; }
-	echo '<p id="external-link" ' . $ex_display_style . ' >';
-	echo '<label for="jm_breaking_news_link">' . __( 'Breaking News Link', 'jm-breaking-news' ) . '</label>';
-	echo '<input type="text" name="jm_breaking_news_link" id="jm_breaking_news_link" value="' . $link .'" />';
-	echo '</p>';
+	echo '<tr id="external-link" ' . $ex_display_style . ' >';
+	echo '<td><label for="jm_breaking_news_link">' . __( 'Breaking News Link', 'jm-breaking-news' ) . '</label></td>';
+	echo '<td><input type="text" name="jm_breaking_news_link" id="jm_breaking_news_link" value="' . $link .'" /></td>';
+	echo '</tr>';
 
 	if ( $in_ex == 0 ) { $in_display_style = 'style="display:none;"'; } else { $in_display_style = ''; }
-	echo '<p id="internal-link" ' . $in_display_style . ' >';
-	echo '<label for="jm_breaking_news_internal_link">' . __( 'Breaking News Link', 'jm-breaking-news' ) . '</label>';
-	echo '<select id="jm_breaking_news_internal_link" name="jm_breaking_news_internal_link">';
+	echo '<tr id="internal-link" ' . $in_display_style . ' >';
+	echo '<td><label for="jm_breaking_news_internal_link">' . __( 'Breaking News Link', 'jm-breaking-news' ) . '</label></td>';
+	echo '<td><select id="jm_breaking_news_internal_link" name="jm_breaking_news_internal_link">';
 	foreach ( $posts_array as $key => $name ) {
 		if ( $key == $internal_link ) {
 			$selected = 'selected="selected"';
@@ -66,38 +67,39 @@ function breaking_news_meta_box_cb() {
 		}
 		echo '<option value="' . $key . '" ' . $selected . '>' . $name . '</option>';
 	}
-	echo '</select>';
-	echo '</p>';
+	echo '</select></td>';
+	echo '</tr>';
 
-	echo '<p>';
-	echo '<label for="jm_breaking_news_target">' . __( 'Display Link in New Window', 'jm-breaking-news' ) . '</label>';
-	echo '<input type="checkbox" name="jm_breaking_news_target" id="jm_breaking_news_target" value="1" ' . checked( $target, 1, false ) . '  />';
-	echo '</p>';
+	echo '<tr>';
+	echo '<td><label for="jm_breaking_news_target">' . __( 'Display Link in New Window', 'jm-breaking-news' ) . '</label></td>';
+	echo '<td><input type="checkbox" name="jm_breaking_news_target" id="jm_breaking_news_target" value="1" ' . checked( $target, 1, false ) . '  /></td>';
+	echo '</tr>';
 
-	echo '<p>';
-	echo '<label for="jm_breaking_news_limit">' . __( 'Time Limit to Show Breaking News', 'jm-breaking-news' ) . '</label>';
-	echo '<input type="number" min="1" max="48" name="jm_breaking_news_limit" id="jm_breaking_news_limit" value="' . $limit .'" />';
-	echo '</p>';
+	echo '<tr>';
+	echo '<td><label for="jm_breaking_news_limit">' . __( 'Time Limit to Show Breaking News', 'jm-breaking-news' ) . '</label></td>';
+	echo '<td><input type="number" min="1" max="48" name="jm_breaking_news_limit" id="jm_breaking_news_limit" value="' . $limit .'" /></td>';
+	echo '</tr>';
 
-	echo '<p>';
-	echo '<label for="jm_breaking_news_color">' . __( 'Background Color for "Breaking News" section', 'jm-breaking-news' ) . '</label>';
-	echo '<input type="text" name="jm_breaking_news_color" id="jm_breaking_news_color" value="' . $color .'" />';
-	echo '</p>';
+	echo '<tr>';
+	echo '<td><label for="jm_breaking_news_color">' . __( 'Background Color for "Breaking News" section', 'jm-breaking-news' ) . '</label></td>';
+	echo '<td><input type="text" name="jm_breaking_news_color" id="jm_breaking_news_color" value="' . $color .'" /></td>';
+	echo '</tr>';
 
-    echo '<p>';
-    echo '<label for="jm_breaking_news_background_color">' . __( 'Background Color for body section', 'jm-breaking-news' ) . '</label>';
-    echo '<input type="text" name="jm_breaking_news_background_color" id="jm_breaking_news_background_color" value="' . $background_color .'" />';
-    echo '</p>';
+    echo '<tr>';
+    echo '<td><label for="jm_breaking_news_background_color">' . __( 'Background Color for body section', 'jm-breaking-news' ) . '</label></td>';
+    echo '<td><input type="text" name="jm_breaking_news_background_color" id="jm_breaking_news_background_color" value="' . $background_color .'" /></td>';
+    echo '</tr>';
 
-    echo '<p>';
-    echo '<label for="jm_breaking_news_text_color">' . __( 'Text Color for "Breaking News" section', 'jm-breaking-news' ) . '</label>';
-    echo '<input type="text" name="jm_breaking_news_text_color" id="jm_breaking_news_text_color" value="' . $text_color .'" />';
-    echo '</p>';
+    echo '<tr>';
+    echo '<td><label for="jm_breaking_news_text_color">' . __( 'Text Color for "Breaking News" section', 'jm-breaking-news' ) . '</label></td>';
+    echo '<td><input type="text" name="jm_breaking_news_text_color" id="jm_breaking_news_text_color" value="' . $text_color .'" /></td>';
+    echo '</tr>';
 
-    echo '<p>';
-    echo '<label for="jm_breaking_news_news_text_color">' . __( 'Text Color for body section', 'jm-breaking-news' ) . '</label>';
-    echo '<input type="text" name="jm_breaking_news_news_text_color" id="jm_breaking_news_news_text_color" value="' . $news_text_color .'" />';
-    echo '</p>';
+    echo '<tr>';
+    echo '<td><label for="jm_breaking_news_news_text_color">' . __( 'Text Color for body section', 'jm-breaking-news' ) . '</label></td>';
+    echo '<td><input type="text" name="jm_breaking_news_news_text_color" id="jm_breaking_news_news_text_color" value="' . $news_text_color .'" /></td>';
+    echo '</tr>';
+    echo '</table>';
 }
 
 if ( ! function_exists( 'check_color' ) ) {
