@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Breaking News\n"
-"POT-Creation-Date: 2016-04-23 12:43-0500\n"
-"PO-Revision-Date: 2016-04-23 12:56-0500\n"
+"POT-Creation-Date: 2017-05-29 15:54-0500\n"
+"PO-Revision-Date: 2017-05-29 15:54-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.0\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: jm-breaking-news.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -45,7 +45,7 @@ msgstr ""
 "Esta opción de la caja de radio le permite seleccionar si el enlace es "
 "interno o externo. La opción correspondiente aparecerá a continuación."
 
-#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:42
+#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:46
 msgid "External Link"
 msgstr "Enlace Externo"
 
@@ -57,7 +57,7 @@ msgstr ""
 "Este cuadro de texto es donde puede Agregar el enlace externo, si lo "
 "hubiera, a la caja de noticias de última hora."
 
-#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:44
+#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:48
 msgid "Internal Link"
 msgstr "Enlace Interno"
 
@@ -97,7 +97,8 @@ msgstr ""
 "Establecer un color de fondo para “Breaking News” la mitad de la bandera."
 
 #: admin/breaking-news-cpt.php:13 admin/breaking-news-cpt.php:24
-#: breaking-news-widget.php:60 jm-breaking-news.php:102
+#: breaking-news-widget.php:75 jm-breaking-news.php:117
+#: jm-breaking-news.php:199
 msgid "Breaking News"
 msgstr "Últimas Noticias"
 
@@ -149,27 +150,39 @@ msgstr "Tipo Publicar poner romper texto de la noticia y un enlace."
 msgid "Breaking News Info"
 msgstr "Rompiendo información de noticias"
 
-#: admin/breaking-news-fields.php:50 admin/breaking-news-fields.php:56
+#: admin/breaking-news-fields.php:54 admin/breaking-news-fields.php:60
 msgid "Breaking News Link"
 msgstr "Romper enlace de noticias"
 
-#: admin/breaking-news-fields.php:70
+#: admin/breaking-news-fields.php:74
 msgid "Display Link in New Window"
 msgstr "Pantalla Enlace en ventana nueva"
 
-#: admin/breaking-news-fields.php:75
+#: admin/breaking-news-fields.php:79
 msgid "Time Limit to Show Breaking News"
 msgstr "Tiempo límite para Mostrar Noticias de última hora"
 
-#: admin/breaking-news-fields.php:80
+#: admin/breaking-news-fields.php:84
 msgid "Background Color for \"Breaking News\" section"
 msgstr "Color de fondo para la sección de “Noticias”"
+
+#: admin/breaking-news-fields.php:89
+msgid "Background Color for body section"
+msgstr "Color de fondo para la sección de entradas"
+
+#: admin/breaking-news-fields.php:94
+msgid "Text Color for \"Breaking News\" section"
+msgstr "Color del texto para la sección de \"Noticias\""
+
+#: admin/breaking-news-fields.php:99
+msgid "Text Color for body section"
+msgstr "Color de texto para la sección del cuerpo"
 
 #: breaking-news-widget.php:17
 msgid "JM Breaking News Widget"
 msgstr "Widget de noticias de última hora de JM"
 
-#: jm-breaking-news.php:129
+#: jm-breaking-news.php:144
 #, php-format
 msgid "<link rel=\"%1$s\" type=\"%2$s\" href=\"%3$s\" />"
 msgstr ""

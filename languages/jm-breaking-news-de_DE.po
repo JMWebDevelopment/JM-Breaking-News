@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JM Breaking News\n"
-"POT-Creation-Date: 2016-04-23 12:36-0500\n"
-"PO-Revision-Date: 2016-04-23 12:38-0500\n"
+"POT-Creation-Date: 2017-05-29 15:53-0500\n"
+"PO-Revision-Date: 2017-05-29 15:54-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.0\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: jm-breaking-news.php\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -46,7 +46,7 @@ msgstr ""
 "Dieser Radio-Feld-Option können Sie auswählen, ob der Link intern oder "
 "extern ist. Die entsprechende Option erscheint dann unten."
 
-#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:42
+#: admin/breaking-news-contextual-help.php:17 admin/breaking-news-fields.php:46
 msgid "External Link"
 msgstr "Externer Link"
 
@@ -58,7 +58,7 @@ msgstr ""
 "Dieses Feld ist, wo Sie den externen Hyperlink hinzufügen können, sofern "
 "vorhanden, im Feld Nachrichten brechend."
 
-#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:44
+#: admin/breaking-news-contextual-help.php:18 admin/breaking-news-fields.php:48
 msgid "Internal Link"
 msgstr "Interner Link"
 
@@ -78,7 +78,7 @@ msgstr "Ziel"
 msgid "Check this box to open the link in a new window."
 msgstr ""
 "Aktivieren Sie diese Option, um den obigen Link in einem neuen Fenster zu "
-"öffnen"
+"öffnen."
 
 #: admin/breaking-news-contextual-help.php:20
 msgid "Time Limit"
@@ -100,7 +100,8 @@ msgstr ""
 "Banners."
 
 #: admin/breaking-news-cpt.php:13 admin/breaking-news-cpt.php:24
-#: breaking-news-widget.php:60 jm-breaking-news.php:102
+#: breaking-news-widget.php:75 jm-breaking-news.php:117
+#: jm-breaking-news.php:199
 msgid "Breaking News"
 msgstr "Eilmeldung"
 
@@ -152,27 +153,39 @@ msgstr "Post-Typ, aktuelle Nachrichten Text und einen Link zu setzen."
 msgid "Breaking News Info"
 msgstr "Eilmeldung Informationen"
 
-#: admin/breaking-news-fields.php:50 admin/breaking-news-fields.php:56
+#: admin/breaking-news-fields.php:54 admin/breaking-news-fields.php:60
 msgid "Breaking News Link"
 msgstr "Eilmeldung Link"
 
-#: admin/breaking-news-fields.php:70
+#: admin/breaking-news-fields.php:74
 msgid "Display Link in New Window"
 msgstr "Display Link in neuem Fenster"
 
-#: admin/breaking-news-fields.php:75
+#: admin/breaking-news-fields.php:79
 msgid "Time Limit to Show Breaking News"
 msgstr "Frist, zeigen aktuelle Nachrichten"
 
-#: admin/breaking-news-fields.php:80
+#: admin/breaking-news-fields.php:84
 msgid "Background Color for \"Breaking News\" section"
 msgstr "Hintergrundfarbe für “Breaking News”-Bereich"
+
+#: admin/breaking-news-fields.php:89
+msgid "Background Color for body section"
+msgstr "Hintergrundfarbe für Body-Bereich"
+
+#: admin/breaking-news-fields.php:94
+msgid "Text Color for \"Breaking News\" section"
+msgstr "Textfarbe für die Rubrik \"Breaking News\""
+
+#: admin/breaking-news-fields.php:99
+msgid "Text Color for body section"
+msgstr "Textfarbe für Body-Bereich"
 
 #: breaking-news-widget.php:17
 msgid "JM Breaking News Widget"
 msgstr "JM Breaking News Widget"
 
-#: jm-breaking-news.php:129
+#: jm-breaking-news.php:144
 #, php-format
 msgid "<link rel=\"%1$s\" type=\"%2$s\" href=\"%3$s\" />"
 msgstr ""
