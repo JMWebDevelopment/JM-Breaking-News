@@ -14,20 +14,9 @@ function jm_breaking_news_add_box() {
 }
 add_action( 'admin_menu', 'jm_breaking_news_add_box' );
 
-$args = array( 'numberposts' => -1 );
-global $posts_array;
-$posts = get_posts( $args );
-foreach( $posts as $post ) {
-	setup_postdata( $post );
-	$link = get_the_ID();
-	$name = get_the_title();
-	$posts_array[ $link ] = $name;
-}
-
 //* Create the actual meta box
 function breaking_news_meta_box_cb() {
 	global $post;
-	global $posts_array;
 	$values = get_post_custom( $post->ID );
 	if ( isset( $values[ 'jm_breaking_news_in_ex' ] ) ) { $in_ex = $values[ 'jm_breaking_news_in_ex' ][ 0 ]; } else { $in_ex = '0'; }
 	if ( isset( $values[ 'jm_breaking_news_link' ] ) ) { $link = $values[ 'jm_breaking_news_link' ][ 0 ]; } else { $link = ''; }
@@ -59,14 +48,6 @@ function breaking_news_meta_box_cb() {
 	echo '<tr id="internal-link" ' . $in_display_style . ' >';
 	echo '<td><label for="jm_breaking_news_internal_link">' . __( 'Breaking News Link', 'jm-breaking-news' ) . '</label></td>';
 	echo '<td><select id="jm_breaking_news_internal_link" name="jm_breaking_news_internal_link">';
-	foreach ( $posts_array as $key => $name ) {
-		if ( $key == $internal_link ) {
-			$selected = 'selected="selected"';
-		} else {
-			$selected = '';
-		}
-		echo '<option value="' . $key . '" ' . $selected . '>' . $name . '</option>';
-	}
 	echo '</select></td>';
 	echo '</tr>';
 
@@ -114,7 +95,6 @@ if ( ! function_exists( 'check_color' ) ) {
 
 //* Save and sanitize the meta box
 function jm_breaking_news_save_box( $post_id ) {
-	global $posts_array;
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
@@ -140,8 +120,8 @@ function jm_breaking_news_save_box( $post_id ) {
     update_post_meta( $post_id, 'jm_breaking_news_target', $check );
 
     
-	if ( isset( $_POST[ 'jm_breaking_news_internal_link' ] ) && array_key_exists( $_POST[ 'jm_breaking_news_internal_link' ], $posts_array ) ) {
-		update_post_meta( $post_id, 'jm_breaking_news_internal_link', wp_filter_nohtml_kses( $_POST[ 'jm_breaking_news_internal_link' ] ) );
+	if ( isset( $_POST[ 'jm_breaking_news_internal_link' ] ) ) {
+		update_post_meta( $post_id, 'jm_breaking_news_internal_link', intval( $_POST[ 'jm_breaking_news_internal_link' ] ) );
 	}
 
     $color = strip_tags( stripslashes( trim( $_POST[ 'jm_breaking_news_color' ] ) ) );

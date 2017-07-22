@@ -3,7 +3,7 @@
 * Plugin Name: JM Breaking News
 * Plugin URI: http://www.jacobmartella.com/jm-breaking-news/
 * Description: Displays a breaking news banner, similar to that of CNN, with custom text and link on the webpage via a custom post type.
-* Version: 1.8
+* Version: 1.8.1
 * Author: Jacob Martella
 * Author URI: http://www.jacobmartella.com
 * License: GPLv3
@@ -58,6 +58,19 @@ function jm_breaking_news_admin_scripts() {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'jm_breaking_news_admin_script', plugin_dir_url( __FILE__ ) . 'js/breaking-news-show-hide-fields.js' );
 		wp_enqueue_style( 'jm_breaking_news_admin_styles', plugin_dir_url( __FILE__ ) . 'css/breaking-news-admin-style.css' );
+
+
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_internal_link', true ) ) {
+		    $selected = get_post_meta( get_the_ID(), 'jm_breaking_news_internal_link', true );
+        } else {
+		    $selected = '';
+        }
+        $args = array(
+            'rest_url'      => get_home_url() . '/wp-json/',
+            'selected_post' => $selected
+        );
+        wp_enqueue_script( 'jm_breaking_news_load_posts_script', plugin_dir_url( __FILE__ ) . 'js/breaking-news-load-posts.js' );
+        wp_localize_script( 'jm_breaking_news_load_posts_script', 'jmloadposts', $args );
 	}
 }
 add_action( 'admin_enqueue_scripts', 'jm_breaking_news_admin_scripts' );
