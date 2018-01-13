@@ -2,8 +2,8 @@
 Contributors: ArenaPigskin
 Tags: breaking news, banner
 Requires at least: 4.7
-Tested up to: 4.8
-Stable tag: 1.8.1
+Tested up to: 4.9
+Stable tag: 1.8.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -28,6 +28,9 @@ The banner has a width of 100%, so it will fit into any size container; however,
 2. The breaking news banner in action on the web site.
 
 == Changelog ==
+= 1.8.2 =
+Tested with WordPress 4.9.
+
 = 1.8.1 =
 - Changed to load internal posts to link over to the WP REST API to avoid fatal errors.
 - Changed required WordPress version to 4.7.

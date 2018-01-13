@@ -63,34 +63,32 @@ function breaking_news_meta_box_cb() {
 
 	echo '<tr>';
 	echo '<td><label for="jm_breaking_news_color">' . __( 'Background Color for "Breaking News" section', 'jm-breaking-news' ) . '</label></td>';
-	echo '<td><input type="text" name="jm_breaking_news_color" id="jm_breaking_news_color" value="' . $color .'" /></td>';
+	echo '<td><input type="text" name="jm_breaking_news_color" id="jm_breaking_news_color" value="' . $color .'" class="color-field" /></td>';
 	echo '</tr>';
 
     echo '<tr>';
     echo '<td><label for="jm_breaking_news_background_color">' . __( 'Background Color for body section', 'jm-breaking-news' ) . '</label></td>';
-    echo '<td><input type="text" name="jm_breaking_news_background_color" id="jm_breaking_news_background_color" value="' . $background_color .'" /></td>';
+    echo '<td><input type="text" name="jm_breaking_news_background_color" id="jm_breaking_news_background_color" value="' . $background_color .'" class="color-field" /></td>';
     echo '</tr>';
 
     echo '<tr>';
     echo '<td><label for="jm_breaking_news_text_color">' . __( 'Text Color for "Breaking News" section', 'jm-breaking-news' ) . '</label></td>';
-    echo '<td><input type="text" name="jm_breaking_news_text_color" id="jm_breaking_news_text_color" value="' . $text_color .'" /></td>';
+    echo '<td><input type="text" name="jm_breaking_news_text_color" id="jm_breaking_news_text_color" value="' . $text_color .'" class="color-field" /></td>';
     echo '</tr>';
 
     echo '<tr>';
     echo '<td><label for="jm_breaking_news_news_text_color">' . __( 'Text Color for body section', 'jm-breaking-news' ) . '</label></td>';
-    echo '<td><input type="text" name="jm_breaking_news_news_text_color" id="jm_breaking_news_news_text_color" value="' . $news_text_color .'" /></td>';
+    echo '<td><input type="text" name="jm_breaking_news_news_text_color" id="jm_breaking_news_news_text_color" value="' . $news_text_color .'" class="color-field" /></td>';
     echo '</tr>';
     echo '</table>';
 }
 
-if ( ! function_exists( 'check_color' ) ) {
-	function check_color( $value ) {
-		if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #
-			return true;
-		}
+function jm_breaking_news_check_color( $value ) {
+    if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) || preg_match( '/^[a-f0-9]{6}$/i', $value ) ) { // if user insert a HEX color with #
+        return true;
+    }
 
-		return false;
-	}
+    return false;
 }
 
 //* Save and sanitize the meta box
@@ -129,16 +127,16 @@ function jm_breaking_news_save_box( $post_id ) {
     $text_color = strip_tags( stripslashes( trim( $_POST[ 'jm_breaking_news_text_color' ] ) ) );
     $news_text_color = strip_tags( stripslashes( trim( $_POST[ 'jm_breaking_news_news_text_color' ] ) ) );
 
-    if( TRUE === check_color( $color ) ) {
+    if( jm_breaking_news_check_color( $color ) ) {
 		update_post_meta( $post_id, 'jm_breaking_news_color', $color );
     }
-    if( TRUE === check_color( $background_color ) ) {
+    if( jm_breaking_news_check_color( $background_color ) ) {
         update_post_meta( $post_id, 'jm_breaking_news_background_color', $background_color );
     }
-    if( TRUE === check_color( $text_color ) ) {
+    if( jm_breaking_news_check_color( $text_color ) ) {
         update_post_meta( $post_id, 'jm_breaking_news_text_color', $text_color );
     }
-    if( TRUE === check_color( $news_text_color ) ) {
+    if( jm_breaking_news_check_color( $news_text_color ) ) {
         update_post_meta( $post_id, 'jm_breaking_news_news_text_color', $news_text_color );
     }
 }
