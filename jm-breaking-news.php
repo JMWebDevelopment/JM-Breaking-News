@@ -124,7 +124,8 @@ function jm_breaking_news() {
         } else {
             $news_text_color_style = '';
         }
-		if ( $difference < $limit ) {
+		$use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
+		if ( $difference < $limit || false === $use_limit ) {
 			$html .= '<section class="breaking-news-box">';
 			$html .= '<div class="breaking-news-left" ' . $style . '>';
 			$html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
@@ -146,7 +147,6 @@ function jm_breaking_news() {
 
 //* Breaking News Custom RSS Feed
 add_action( 'wp_head', 'jm_breaking_news_feed' );
- 
 function jm_breaking_news_feed() {
     $post_types = array( 'jm_breaking_news' );
     foreach( $post_types as $post_type ) {
@@ -206,7 +206,8 @@ function jm_breaking_news_shortcode( $atts ) {
         } else {
             $news_text_color_style = '';
         }
-        if ( $difference < $limit ) {
+        $use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
+        if ( $difference < $limit || false === $use_limit ) {
             $html .= '<section class="breaking-news-box">';
             $html .= '<div class="breaking-news-left" ' . $style . '>';
             $html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
@@ -225,4 +226,56 @@ function jm_breaking_news_shortcode( $atts ) {
 
 	return $html;
 }
-?>
+
+/*function breaking_news_blocks_editor_scripts() {
+	// Make paths variables so we don't write em twice ;)
+	$blockPath = '/js/editor.blocks.js';
+	//$editorStylePath = '/assets/css/blocks.editor.css';
+	// Enqueue the bundled block JS file
+	wp_enqueue_script(
+		'breaking-news-blocks-js',
+		plugins_url( $blockPath, __FILE__ ),
+		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ],
+		filemtime( plugin_dir_path(__FILE__) . $blockPath )
+	);
+	// Pass in REST URL
+	wp_localize_script(
+		'jsforwp-blocks-js',
+		'jsforwp_globals',
+		[
+			'rest_url' => esc_url( rest_url() )
+		]);
+	// Enqueue optional editor only styles
+	/*wp_enqueue_style(
+		'jsforwp-blocks-editor-css',
+		plugins_url( $editorStylePath, __FILE__),
+		[ 'wp-blocks' ],
+		filemtime( plugin_dir_path( __FILE__ ) . $editorStylePath )
+	);
+}
+// Hook scripts function into block editor hook
+add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
+
+register_block_type( 'teaser/reference-block', array(
+	'editor_script' => 'breaking-news-blocks-js',
+	'render_callback' => 'rendered_block_callback',
+));
+
+function rendered_block_callback( $attributes ){
+	$post_id = $attributes['post_id'];
+	return $this->render_reference_block( $post_id, $attributes );
+}
+
+function render_reference_block( $post_id, $extra_vars = array(), $template = 'block-reference' ) {
+	//error_log( var_export( $template, true) );
+	$query = new WP_Query( array( 'p' => $post_id, 'post_type' => 'any' ) );
+	ob_start();
+	if( $query->have_posts() ): while( $query->have_posts() ): $query->the_post();
+		$this->loader
+				->set_template_data( $extra_vars, 'blockVars' )
+				->get_template_part( $template );
+			wp_reset_postdata(); endwhile; endif;
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+	}*/
