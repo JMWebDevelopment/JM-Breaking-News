@@ -1,5 +1,4 @@
 /**
  * Import registerBlockType blocks
  */
-import '../block';
-
+import './breaking-news-block';

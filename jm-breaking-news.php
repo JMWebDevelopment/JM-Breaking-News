@@ -227,10 +227,10 @@ function jm_breaking_news_shortcode( $atts ) {
 	return $html;
 }
 
-/*function breaking_news_blocks_editor_scripts() {
+function breaking_news_blocks_editor_scripts() {
 	// Make paths variables so we don't write em twice ;)
 	$blockPath = '/js/editor.blocks.js';
-	//$editorStylePath = '/assets/css/blocks.editor.css';
+	$editorStylePath = '/assets/css/blocks.editor.css';
 	// Enqueue the bundled block JS file
 	wp_enqueue_script(
 		'breaking-news-blocks-js',
@@ -251,31 +251,74 @@ function jm_breaking_news_shortcode( $atts ) {
 		plugins_url( $editorStylePath, __FILE__),
 		[ 'wp-blocks' ],
 		filemtime( plugin_dir_path( __FILE__ ) . $editorStylePath )
-	);
+	);*/
 }
 // Hook scripts function into block editor hook
 add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
 
-register_block_type( 'teaser/reference-block', array(
-	'editor_script' => 'breaking-news-blocks-js',
-	'render_callback' => 'rendered_block_callback',
+register_block_type( 'jm-breaking-news/jm-breaking-news-block', array(
+	'render_callback' => 'rendered_jm_breaking_news',
 ));
 
-function rendered_block_callback( $attributes ){
-	$post_id = $attributes['post_id'];
-	return $this->render_reference_block( $post_id, $attributes );
-}
+function rendered_jm_breaking_news( $attributes ){
+	$html = '';
+	$jm_breaking_news_args = array(
+		'post_type'         => 'jm_breaking_news',
+		'posts_per_page'    => 1,
+	);
+	$jm_breaking_news = new WP_Query($jm_breaking_news_args);
+	if ( $jm_breaking_news->have_posts() ) : while ( $jm_breaking_news->have_posts() ) : $jm_breaking_news->the_post();
+		$current_time = strtotime( current_time( 'mysql' ) );
+		$post_time = strtotime( get_the_date( 'r' ) );
+		$difference = ( $current_time - $post_time ) / ( 60 * 60 );
+		$limit = get_post_meta( get_the_ID(), 'jm_breaking_news_limit', true );
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_target', true ) == 1 ) {
+			$target = 'target="_blank"';
+		} else {
+			$target = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_in_ex', true ) == 1 ) {
+			$link = get_post_meta( get_the_ID(), 'jm_breaking_news_internal_link', true );
+		} else {
+			$link = get_post_meta( get_the_ID(), 'jm_breaking_news_link', true );
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_color', true ) ) {
+			$style = 'style="background-color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_color', true ) . ';"';
+		} else {
+			$style = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_background_color', true ) ) {
+			$background_color_style = 'style="background-color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_background_color', true ) . ';"';
+		} else {
+			$background_color_style = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_text_color', true ) ) {
+			$text_color_style = 'style="color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_text_color', true ) . ';"';
+		} else {
+			$text_color_style = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_news_text_color', true ) ) {
+			$news_text_color_style = 'style="color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_news_text_color', true ) . ';"';
+		} else {
+			$news_text_color_style = '';
+		}
+		$use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
+		if ( $difference < $limit || false === $use_limit ) {
+			$html .= '<section class="breaking-news-box">';
+			$html .= '<div class="breaking-news-left" ' . $style . '>';
+			$html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
+			$html .= '</div>';
+			$html .= '<div class="breaking-news-right" ' . $background_color_style . '>';
+			if ( $link != '' ) {
+				$html .= '<h2 class="breaking-news-right-h2" ' . $news_text_color_style . '><a href="' . $link . '" ' . $target . '>' . get_the_title() . '</a></h2>';
+			} else {
+				$html .= '<h2 class="breaking-news-right-h2" ' . $news_text_color_style . '>' . get_the_title() . '</h2>';
+			}
+			$html .= '</div>';
+			$html .= '</section>';
+		}
+	endwhile; endif;
+	wp_reset_query();
 
-function render_reference_block( $post_id, $extra_vars = array(), $template = 'block-reference' ) {
-	//error_log( var_export( $template, true) );
-	$query = new WP_Query( array( 'p' => $post_id, 'post_type' => 'any' ) );
-	ob_start();
-	if( $query->have_posts() ): while( $query->have_posts() ): $query->the_post();
-		$this->loader
-				->set_template_data( $extra_vars, 'blockVars' )
-				->get_template_part( $template );
-			wp_reset_postdata(); endwhile; endif;
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
-	}*/
+	return $html;
+}
