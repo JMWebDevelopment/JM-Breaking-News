@@ -32,6 +32,9 @@ include_once(JM_BREAKING_NEWS_PATH . 'admin/breaking-news-fields.php');
 //* Load the contextual help for the breaking news
 include_once(JM_BREAKING_NEWS_PATH . 'admin/breaking-news-contextual-help.php');
 
+//* Load the custom fields for the CPT in the rest api
+include_once(JM_BREAKING_NEWS_PATH . 'admin/breaking-news-rest-api.php');
+
 //* Load the widget
 include_once(plugin_dir_path( __FILE__ ) . 'breaking-news-widget.php');
 
