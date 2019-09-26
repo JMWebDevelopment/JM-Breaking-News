@@ -5,13 +5,6 @@
  * Simple block, renders and saves the same content without any interactivity.
  */
 
-//  Import CSS.
-//import './style.scss';
-//import './editor.scss';
-//import Selecta from './selecta.js';
-
-import icon from './icon';
-
 const { __ } = wp.i18n;
 const {
     InspectorControls,
@@ -34,7 +27,7 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'jm-breaking-news/jm-breaking-news-block', {
+registerBlockType( 'jm-breaking-news/jm-live-blog-block', {
     // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
     title: __('JM Breaking News', 'jm-breaking-news' ),
     icon: 'lightbulb', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.

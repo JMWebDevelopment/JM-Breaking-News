@@ -256,7 +256,7 @@ function breaking_news_blocks_editor_scripts() {
 // Hook scripts function into block editor hook
 add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
 
-register_block_type( 'jm-breaking-news/jm-breaking-news-block', array(
+register_block_type( 'jm-breaking-news/jm-breaking-news', array(
 	'render_callback' => 'rendered_jm_breaking_news',
 ));
 
