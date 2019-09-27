@@ -233,28 +233,27 @@ function jm_breaking_news_shortcode( $atts ) {
 function breaking_news_blocks_editor_scripts() {
 	// Make paths variables so we don't write em twice ;)
 	$blockPath = '/js/editor.blocks.js';
-	$editorStylePath = '/assets/css/blocks.editor.css';
+	$editorStylePath = '/css/blocks.editor.css';
+	// Enqueue optional editor only styles
+	wp_enqueue_style(
+		'jsforwp-blocks-editor-css',
+		plugins_url( $editorStylePath, __FILE__)
+	);
 	// Enqueue the bundled block JS file
 	wp_enqueue_script(
 		'breaking-news-blocks-js',
 		plugins_url( $blockPath, __FILE__ ),
-		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api' ],
+		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api', 'wp-editor' ],
 		filemtime( plugin_dir_path(__FILE__) . $blockPath )
 	);
 	// Pass in REST URL
 	wp_localize_script(
-		'jsforwp-blocks-js',
-		'jsforwp_globals',
+		'breaking-news-blocks-js',
+		'jm_breaking_news_globals',
 		[
-			'rest_url' => esc_url( rest_url() )
+			'rest_url'  => esc_url( rest_url() ),
+			'nonce'     => wp_create_nonce( 'wp_rest' ),
 		]);
-	// Enqueue optional editor only styles
-	/*wp_enqueue_style(
-		'jsforwp-blocks-editor-css',
-		plugins_url( $editorStylePath, __FILE__),
-		[ 'wp-blocks' ],
-		filemtime( plugin_dir_path( __FILE__ ) . $editorStylePath )
-	);*/
 }
 // Hook scripts function into block editor hook
 add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
@@ -313,9 +312,9 @@ function rendered_jm_breaking_news( $attributes ){
 			$html .= '</div>';
 			$html .= '<div class="breaking-news-right" ' . $background_color_style . '>';
 			if ( $link != '' ) {
-				$html .= '<h2 class="breaking-news-right-h2" ' . $news_text_color_style . '><a href="' . $link . '" ' . $target . '>' . get_the_title() . '</a></h2>';
+				$html .= '<p class="breaking-news-right-h2" ' . $news_text_color_style . '><a href="' . $link . '" ' . $target . '>' . get_the_title() . '</a></p>';
 			} else {
-				$html .= '<h2 class="breaking-news-right-h2" ' . $news_text_color_style . '>' . get_the_title() . '</h2>';
+				$html .= '<p class="breaking-news-right-h2" ' . $news_text_color_style . '>' . get_the_title() . '</p>';
 			}
 			$html .= '</div>';
 			$html .= '</section>';

@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import fetch from 'isomorphic-fetch';
 
-const Select2 = createClass({
-    displayName: 'Select2',
-    propTypes: {
-        label: PropTypes.string,
-    },
+const SelectPost = createClass({
+    displayName: 'SelectPost',
     getInitialState () {
         return {
             backspaceRemoves: true,
@@ -26,7 +23,26 @@ const Select2 = createClass({
 
     getData (input) {
         if (!input) {
-            return Promise.resolve({ options: [] });
+            var url = this.props.restUrl;
+
+            return fetch( url, {
+                credentials: 'same-origin',
+                method: 'get',
+                headers: {
+                    'X-WP-Nonce': this.props.nonce
+                }})
+                .then( this.handleFetchErrors )
+                .then( ( response ) => response.json() )
+                .then( ( json ) => {
+                    var dataOptions = json.map( function(opt, i){
+                        return {value: opt.id, label: opt.title.rendered}
+                    });
+                    console.log(dataOptions);
+                    return { options: dataOptions };
+                }).catch(function(e) {
+                    console.log("error");
+                    console.log(e)
+                });
         }
         var sanatizedInput = this.sanatizeInput( input );
         var url = this.props.restUrl + sanatizedInput;
@@ -40,9 +56,14 @@ const Select2 = createClass({
             .then( this.handleFetchErrors )
             .then( ( response ) => response.json() )
             .then( ( json ) => {
-                return { options: json };
-            }).catch(function() {
+                var dataOptions = json.map( function(opt, i){
+                    return {value: opt.id, label: opt.title.rendered}
+                });
+                console.log(dataOptions);
+                return { options: dataOptions };
+            }).catch(function(e) {
                 console.log("error");
+                console.log(e)
             });
     },
     handleFetchErrors(response) {
@@ -77,18 +98,17 @@ const Select2 = createClass({
             ? Select.AsyncCreatable
             : Select.Async;
 
+        console.log(this.getData);
         return (
             <div className="section">
-                <AsyncComponent
-                    multi={this.state.multi}
+                <Select.Async
                     value={this.state.value}
                     onChange={this.onChange}
                     loadOptions={this.getData}
-                    backspaceRemoves={this.state.backspaceRemoves}
                 />
             </div>
         );
     }
 });
 
-export default Select2;
+export default SelectPost;
