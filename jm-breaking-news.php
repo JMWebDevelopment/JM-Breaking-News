@@ -258,6 +258,18 @@ function breaking_news_blocks_editor_scripts() {
 // Hook scripts function into block editor hook
 add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
 
+function breaking_news_block_scripts() {
+	// Make paths variables so we don't write em twice ;)
+	$stylePath = '/css/blocks.style.css';
+	// Enqueue optional editor only styles
+	wp_enqueue_style(
+		'jm-breaking-news-block-css',
+		plugins_url( $stylePath, __FILE__)
+	);
+}
+// Hook scripts function into block editor hook
+add_action( 'enqueue_block_assets', 'breaking_news_block_scripts' );
+
 register_block_type( 'jm-breaking-news/jm-breaking-news', array(
 	'render_callback' => 'rendered_jm_breaking_news',
 ));

@@ -141,7 +141,7 @@ registerBlockType(
             ];
         },
 
-        save() {
+        save( { attributes, setAttributes, focus, setFocus, className } ) {
             // Rendering in PHP
             return null;
         },
