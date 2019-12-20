@@ -19,7 +19,7 @@ Keep pull requests as concise as possible. If you're addressing a bug, only subm
 ## Branch naming convention
 Name your branches with prefixes and descriptions: [type]/[change]. Examples:
 
-feature/ = add a new feature
+add/ = add a new feature
 hot-fix/ = a fix that needs to be implemented right away (to fix a breaking change)
-bug-fix/ = a fix to a bug that can wait until the next release cycle
+fix/ = a fix to a bug that can wait until the next release cycle
 try/ = experimental feature, testing out an idea

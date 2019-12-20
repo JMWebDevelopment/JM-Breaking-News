@@ -6,7 +6,7 @@
  *
  * @author Jacob Martella
  * @package JM Breaking News
- * @version 1.8
+ * @version 1.9
  */
 class JM_Breaking_News_Widget extends WP_Widget {
 

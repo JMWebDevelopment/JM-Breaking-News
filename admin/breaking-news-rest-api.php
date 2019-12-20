@@ -1,4 +1,14 @@
 <?php
+	/**
+	 * breaking-news-rest-api.php
+	 *
+	 * File that adds in fields for the breaking news custom post type.
+	 *
+	 * @author Jacob Martella
+	 * @package JM Breaking News
+	 * @version 1.9
+	 */
+
 	add_action('rest_api_init', 'jm_breaking_news_add_bn_data');
 	function jm_breaking_news_add_bn_data() {
 		register_rest_field( 'jm_breaking_news',

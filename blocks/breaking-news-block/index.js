@@ -5,6 +5,7 @@ import SelectPost from './select';
 //import './style.scss';
 import './editor.scss';
 import moment from 'moment';
+import icon from './icon';
 
 /**
  * Internal block libraries
@@ -21,7 +22,7 @@ const {
 registerBlockType(
     'jm-breaking-news/jm-breaking-news', {
         title: __('Breaking News Post'),
-        icon: 'dashicons-megaphone',
+        icon: icon,
         category: 'widgets',
         keywords: [ __( 'breaking' ), __( 'news' ), __( 'banner' ) ],
 
