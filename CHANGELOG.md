@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.9.1
+- Fixed issue with `is_plugin_active` function not being called correctly.
+
 ## 1.9
 - Added Gutenberg block to show the breaking news banner in a post.
 - Switched the CSS to use flexbox for better display of the banner.

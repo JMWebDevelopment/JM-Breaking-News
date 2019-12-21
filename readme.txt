@@ -28,6 +28,9 @@ The banner has a width of 100%, so it will fit into any size container; however,
 2. The breaking news banner in action on the web site.
 
 == Changelog ==
+= 1.9.1 =
+- Fixed issue with `is_plugin_active` function not being called correctly.
+
 = 1.9=
 - Added Gutenberg block to show the breaking news banner in a post.
 - Switched the CSS to use flexbox for better display of the banner.
