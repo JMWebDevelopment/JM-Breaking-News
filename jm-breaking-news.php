@@ -269,13 +269,16 @@ function breaking_news_block_scripts() {
 }
 // Hook scripts function into block editor hook
 
-if (  is_plugin_active('gutenberg/gutenberg.php') || version_compare(get_bloginfo('version'),'5.0', '>=')  ) {
-	add_action( 'enqueue_block_assets', 'breaking_news_block_scripts' );
-	add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
-	register_block_type( 'jm-breaking-news/jm-breaking-news', array(
-		'render_callback' => 'rendered_jm_breaking_news',
-	) );
+function jm_breaking_news_check_gutenberg() {
+	if ( is_plugin_active( 'gutenberg/gutenberg.php' ) || version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
+		add_action( 'enqueue_block_assets', 'breaking_news_block_scripts' );
+		add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
+		register_block_type( 'jm-breaking-news/jm-breaking-news', array(
+			'render_callback' => 'rendered_jm_breaking_news',
+		) );
+	}
 }
+add_action( 'admin_init', 'jm_breaking_news_check_gutenberg' );
 
 function rendered_jm_breaking_news( $attributes ){
 	$html = '';
