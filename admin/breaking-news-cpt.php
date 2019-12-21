@@ -6,7 +6,7 @@
 *
 * @author Jacob Martella
 * @package JM Breaking News
-* @version 1.8
+* @version 1.9
 */
 function jm_breaking_news_cpt() {
 	$labels = array(
@@ -28,6 +28,7 @@ function jm_breaking_news_cpt() {
 		'description'   => __( 'Post type to put breaking news text and a link.', 'jm-breaking-news' ),
 		'public'        => true,
 		'menu_position' => 5,
+		'show_in_rest'  => true,
 		'menu_icon'     => 'dashicons-lightbulb',
 		'supports'      => array( 'title' ),
 	);

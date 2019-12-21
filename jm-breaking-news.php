@@ -3,7 +3,7 @@
 * Plugin Name: JM Breaking News
 * Plugin URI: http://www.jacobmartella.com/jm-breaking-news/
 * Description: Displays a breaking news banner, similar to that of CNN, with custom text and link on the webpage via a custom post type.
-* Version: 1.8.2
+* Version: 1.9
 * Author: Jacob Martella
 * Author URI: http://www.jacobmartella.com
 * License: GPLv3
@@ -31,6 +31,9 @@ include_once(JM_BREAKING_NEWS_PATH . 'admin/breaking-news-fields.php');
 
 //* Load the contextual help for the breaking news
 include_once(JM_BREAKING_NEWS_PATH . 'admin/breaking-news-contextual-help.php');
+
+//* Load the custom fields for the CPT in the rest api
+include_once(JM_BREAKING_NEWS_PATH . 'admin/breaking-news-rest-api.php');
 
 //* Load the widget
 include_once(plugin_dir_path( __FILE__ ) . 'breaking-news-widget.php');
@@ -124,7 +127,8 @@ function jm_breaking_news() {
         } else {
             $news_text_color_style = '';
         }
-		if ( $difference < $limit ) {
+		$use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
+		if ( $difference < $limit || false === $use_limit ) {
 			$html .= '<section class="breaking-news-box">';
 			$html .= '<div class="breaking-news-left" ' . $style . '>';
 			$html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
@@ -146,7 +150,6 @@ function jm_breaking_news() {
 
 //* Breaking News Custom RSS Feed
 add_action( 'wp_head', 'jm_breaking_news_feed' );
- 
 function jm_breaking_news_feed() {
     $post_types = array( 'jm_breaking_news' );
     foreach( $post_types as $post_type ) {
@@ -206,7 +209,8 @@ function jm_breaking_news_shortcode( $atts ) {
         } else {
             $news_text_color_style = '';
         }
-        if ( $difference < $limit ) {
+        $use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
+        if ( $difference < $limit || false === $use_limit ) {
             $html .= '<section class="breaking-news-box">';
             $html .= '<div class="breaking-news-left" ' . $style . '>';
             $html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
@@ -225,4 +229,113 @@ function jm_breaking_news_shortcode( $atts ) {
 
 	return $html;
 }
-?>
+
+function breaking_news_blocks_editor_scripts() {
+	// Make paths variables so we don't write em twice ;)
+	$blockPath = '/js/editor.blocks.js';
+	$editorStylePath = '/css/blocks.editor.css';
+	// Enqueue optional editor only styles
+	wp_enqueue_style(
+		'jsforwp-blocks-editor-css',
+		plugins_url( $editorStylePath, __FILE__)
+	);
+	// Enqueue the bundled block JS file
+	wp_enqueue_script(
+		'breaking-news-blocks-js',
+		plugins_url( $blockPath, __FILE__ ),
+		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api', 'wp-editor' ],
+		filemtime( plugin_dir_path(__FILE__) . $blockPath )
+	);
+	// Pass in REST URL
+	wp_localize_script(
+		'breaking-news-blocks-js',
+		'jm_breaking_news_globals',
+		[
+			'rest_url'  => esc_url( rest_url() ),
+			'nonce'     => wp_create_nonce( 'wp_rest' ),
+		]);
+}
+// Hook scripts function into block editor hook
+
+
+function breaking_news_block_scripts() {
+	// Make paths variables so we don't write em twice ;)
+	$stylePath = '/css/blocks.style.css';
+	// Enqueue optional editor only styles
+	wp_enqueue_style(
+		'jm-breaking-news-block-css',
+		plugins_url( $stylePath, __FILE__)
+	);
+}
+// Hook scripts function into block editor hook
+
+if (  is_plugin_active('gutenberg/gutenberg.php') || version_compare(get_bloginfo('version'),'5.0', '>=')  ) {
+	add_action( 'enqueue_block_assets', 'breaking_news_block_scripts' );
+	add_action( 'enqueue_block_editor_assets', 'breaking_news_blocks_editor_scripts' );
+	register_block_type( 'jm-breaking-news/jm-breaking-news', array(
+		'render_callback' => 'rendered_jm_breaking_news',
+	) );
+}
+
+function rendered_jm_breaking_news( $attributes ){
+	$html = '';
+	$jm_breaking_news_args = array(
+		'post_type'         => 'jm_breaking_news',
+		'posts_per_page'    => 1,
+	);
+	$jm_breaking_news = new WP_Query($jm_breaking_news_args);
+	if ( $jm_breaking_news->have_posts() ) : while ( $jm_breaking_news->have_posts() ) : $jm_breaking_news->the_post();
+		$current_time = strtotime( current_time( 'mysql' ) );
+		$post_time = strtotime( get_the_date( 'r' ) );
+		$difference = ( $current_time - $post_time ) / ( 60 * 60 );
+		$limit = get_post_meta( get_the_ID(), 'jm_breaking_news_limit', true );
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_target', true ) == 1 ) {
+			$target = 'target="_blank"';
+		} else {
+			$target = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_in_ex', true ) == 1 ) {
+			$link = get_post_meta( get_the_ID(), 'jm_breaking_news_internal_link', true );
+		} else {
+			$link = get_post_meta( get_the_ID(), 'jm_breaking_news_link', true );
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_color', true ) ) {
+			$style = 'style="background-color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_color', true ) . ';"';
+		} else {
+			$style = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_background_color', true ) ) {
+			$background_color_style = 'style="background-color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_background_color', true ) . ';"';
+		} else {
+			$background_color_style = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_text_color', true ) ) {
+			$text_color_style = 'style="color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_text_color', true ) . ';"';
+		} else {
+			$text_color_style = '';
+		}
+		if ( get_post_meta( get_the_ID(), 'jm_breaking_news_news_text_color', true ) ) {
+			$news_text_color_style = 'style="color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_news_text_color', true ) . ';"';
+		} else {
+			$news_text_color_style = '';
+		}
+		$use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
+		if ( $difference < $limit || false === $use_limit ) {
+			$html .= '<section class="breaking-news-box">';
+			$html .= '<div class="breaking-news-left" ' . $style . '>';
+			$html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
+			$html .= '</div>';
+			$html .= '<div class="breaking-news-right" ' . $background_color_style . '>';
+			if ( $link != '' ) {
+				$html .= '<p class="breaking-news-right-h2" ' . $news_text_color_style . '><a href="' . $link . '" ' . $target . '>' . get_the_title() . '</a></p>';
+			} else {
+				$html .= '<p class="breaking-news-right-h2" ' . $news_text_color_style . '>' . get_the_title() . '</p>';
+			}
+			$html .= '</div>';
+			$html .= '</section>';
+		}
+	endwhile; endif;
+	wp_reset_query();
+
+	return $html;
+}

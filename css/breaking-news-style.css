@@ -3,28 +3,24 @@
 *
 * Author: Jacob Martella
 * Package: JM Breaking News
-* Version: 1.8
+* Version: 1.9
 */
 .breaking-news-box {
 	width: 100%;
-	float: left;
-	position: relative;
-	margin: auto;
-	margin-bottom: 10px;
-	height: 79px;
+	margin: 0 auto 10px;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .breaking-news-left {
 	width: 30%;
-	float: left;
-	position: relative;
 	background-color: #C42B2B;
 	text-align: center;
-	height: 79px;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	padding: 15px 10px;
 }
 
 .breaking-news-left-h2 {
@@ -33,35 +29,31 @@
 	font-weight: bold;
 	text-transform: uppercase;
 	color: #FFFFFF;
-	margin-bottom: 0 !important;
+	margin: 0;
 }
 
 .breaking-news-right {
 	width: 70%;
-	float: right;
-	position: relative;
 	background-color: #262626;
-	padding-left: 15px;
-	height: 100%;
-	height: 79px;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	padding: 15px 10px;
 }
 
 .breaking-news-right-h2 {
 	font-family: 'Lato';
 	font-size: 28px;
 	color: #FFFFFF;
-	margin-bottom: 0 !important;
+	margin: 0;
 	font-weight: 300;
 	line-height: 1.2;
 }
 
 .breaking-news-right-h2 a, .breaking-news-right-h2 a:link, .breaking-news-right-h2 a:visited {
 	color: #FFFFFF;
-	margin-bottom: 0 !important;
+	margin-bottom: 0;
 }
 
 .breaking-news-right-h2 a:hover {
@@ -69,66 +61,49 @@
 }
 
 .breaking-news-box.widget {
-	height: 100% !important;
-	padding: 0 !important;
+	padding: 0;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing:    border-box;
 	box-sizing:         border-box;
 }
 
 .breaking-news-box.widget .breaking-news-left {
-	width: 100% !important;
-	float: left;
-	position: relative;
-	height: 100% !important;
+	width: 100%;
+	padding: 15px 10px;
 }
 
 .breaking-news-box.widget .breaking-news-right {
-	width: 100% !important;
-	float: left !important;
-	position: relative !important;
-	height: 100% !important;
-	padding-bottom: 10px;
+	width: 100%;
+	padding: 15px 10px;
 	text-align: center;
 }
 
 /* Styles for the breaking news banner at smaller screen sizes */
 @media only screen and (max-width: 700px) {
 	.breaking-news-box {
-		height: 100% !important;
+
 	}
 
 	.breaking-news-left {
-		width: 100% !important;
-		float: left;
-		position: relative;
-		height: 100% !important;
+		width: 100%;
 	}
 
 	.breaking-news-right {
-		width: 100% !important;
-		float: left !important;
-		position: relative !important;
-		height: 100% !important;
+		width: 100% ;
 		padding-bottom: 10px;
 		text-align: center;
 	}
 }
 
 .breaking-news-box-shortcode {
-	height: 100% !important;
+
 }
 .breaking-news-box-shortcode .breaking-news-left {
-	width: 100% !important;
-	float: left;
-	position: relative;
-	height: 100% !important;
+	width: 100%;
+	padding: 15px 10px;
 }
 .breaking-news-box-shortcode .breaking-news-right {
-	width: 100% !important;
-	float: left !important;
-	position: relative !important;
-	height: 100% !important;
-	padding-bottom: 10px;
+	width: 100%;
+	padding: 15px 10px;
 	text-align: center;
 }

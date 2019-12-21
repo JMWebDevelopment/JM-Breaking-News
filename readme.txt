@@ -2,8 +2,8 @@
 Contributors: ArenaPigskin
 Tags: breaking news, banner
 Requires at least: 4.7
-Tested up to: 4.9
-Stable tag: 1.8.2
+Tested up to: 5.3.2
+Stable tag: 1.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -28,6 +28,12 @@ The banner has a width of 100%, so it will fit into any size container; however,
 2. The breaking news banner in action on the web site.
 
 == Changelog ==
+= 1.9=
+- Added Gutenberg block to show the breaking news banner in a post.
+- Switched the CSS to use flexbox for better display of the banner.
+- Added a Gulp process for better export of the plugin.
+- Tested with WordPress 5.3.
+
 = 1.8.2 =
 Tested with WordPress 4.9.
 
