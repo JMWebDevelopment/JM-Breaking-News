@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.9.2
+- Actually fixed issue with `is_plugin_active` function not being called correctly.
+
 ## 1.9.1
 - Fixed issue with `is_plugin_active` function not being called correctly.
 

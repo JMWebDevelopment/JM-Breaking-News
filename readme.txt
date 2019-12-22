@@ -3,7 +3,7 @@ Contributors: ArenaPigskin
 Tags: breaking news, banner
 Requires at least: 4.7
 Tested up to: 5.3.2
-Stable tag: 1.9
+Stable tag: 1.9.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -28,6 +28,9 @@ The banner has a width of 100%, so it will fit into any size container; however,
 2. The breaking news banner in action on the web site.
 
 == Changelog ==
+= 1.9.2 =
+- Actually fixed issue with `is_plugin_active` function not being called correctly.
+
 = 1.9.1 =
 - Fixed issue with `is_plugin_active` function not being called correctly.
 
