@@ -1,0 +1,8 @@
+{
+  "phpcs.composerJsonPath": "composer.json",
+  "editor.renderWhitespace": "all",
+  "eslint.alwaysShowStatus": true,
+  "stylelint.enable": true,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+}
