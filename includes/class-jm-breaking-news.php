@@ -125,6 +125,10 @@ class JM_Breaking_News {
 		$admin = new JM_Breaking_News_Admin( $this->get_version() );
 		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'contextual_help', $admin, 'contextual_help', 10, 3 );
+		$this->loader->add_action( 'admin_menu', $admin, 'add_meta_box' );
+		$this->loader->add_action( 'save_post', $admin, 'save_meta_box' );
+		$this->loader->add_action( 'rest_api_init', $admin, 'add_rest_data' );
 	}
 
 	/**
