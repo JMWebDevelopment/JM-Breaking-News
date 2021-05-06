@@ -47,7 +47,7 @@ class JM_Breaking_News_Admin {
 	/**
 	 * Enqueues the styles for the admin side of the plugin.
 	 *
-	 * @since SIMPLEPIE_TYPE_RSS_20.0.0
+	 * @since 2.0.0
 	 */
 	public function enqueue_styles() {
 		global $typenow;

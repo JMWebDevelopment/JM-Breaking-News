@@ -138,6 +138,11 @@ class JM_Breaking_News {
 	 */
 	private function define_public_hooks() {
 		$public = new JM_Breaking_News_Public( $this->get_version() );
+		$public->load_breaking_news_function();
+		$this->loader->add_action( 'wp_enqueue_scripts', $public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_head', $public, 'breaking_news_feed' );
+		$this->loader->add_action( 'init', $public, 'register_shortcode' );
+		$this->loader->add_action( 'widgets_init', $public, 'register_widget' );
 	}
 
 	/**

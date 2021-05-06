@@ -1,94 +1,42 @@
 <?php
 /**
- * Holds all of the public side functions.
+ * breaking-news-widget.php
  *
- * PHP version 7.3
+ * File that creates the widget to display breaking news in the sidebar.
  *
- * @link       https://jacobmartella.com
- * @since      2.0.0
- *
- * @package    JM_Breaking_News
- * @subpackage JM_Breaking_News/public
+ * @author Jacob Martella
+ * @package JM Breaking News
+ * @version 1.9
  */
-
 namespace JM_Breaking_News;
 
-/**
- * Runs the public side.
- *
- * This class defines all code necessary to run on the public side of the plugin.
- *
- * @since      2.0.0
- * @package    JM_Breaking_News
- * @subpackage JM_Breaking_News/public
- */
-class JM_Breaking_News_Public {
+class JM_Breaking_News_Widget extends WP_Widget {
 
-	/**
-	 * Version of the plugin.
-	 *
-	 * @since 2.0.0
-	 * @var string $version Description.
-	 */
-	private $version;
-
-	/**
-	 * Builds the JM_Breaking_News_Public object.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param string $version Version of the plugin.
-	 */
-	public function __construct( $version ) {
-		$this->version = $version;
+	// Construct the widget.
+	public function __construct() {
+		parent::__construct(
+			'jm_breaking_news_widget',
+			__( 'JM Breaking News Widget', 'jm-breaking-news' ),
+			array(
+				'classname'     => 'jm_breaking_news_widget',
+				'description'   => 'Displays the breaking news banner in a widget for the sidebar.'
+			)
+		);
 	}
 
-	/**
-	 * Enqueues the styles for the admin side of the plugin.
-	 *
-	 * @since 2.0.0
-	 */
-	public function enqueue_styles() {
-		wp_enqueue_style( 'jm-breaking-news-lato', '//fonts.googleapis.com/css?family=Lato:100,300,400,700', [], $this->version, 'all' );
-		wp_enqueue_style( 'jm-breaking-news-oswald', '//fonts.googleapis.com/css?family=Oswald:400,700,300', [], $this->version, 'all' );
-		wp_enqueue_style( 'jm-breaking-news-admin', plugin_dir_url( __FILE__ ) . 'css/breaking-news-style.min.css', [], $this->version, 'all' );
-	}
+	// Output the content of the widget.
+	public function widget( $args, $instance ) {
+		extract( $args );
 
-	/**
-	 * Enqueues the scripts for the admin side of the plugin.
-	 *
-	 * @since 2.0.0
-	 */
-	public function enqueue_scripts() {
+		echo $before_widget;
 
-	}
-
-	public function load_breaking_news_function() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/breaking-news-function.php';
-	}
-
-	public function breaking_news_feed() {
-		$post_types = array( 'jm_breaking_news' );
-		foreach ( $post_types as $post_type ) {
-			$feed = get_post_type_archive_feed_link( $post_type );
-			if ( '' === $feed || ! is_string( $feed ) ) {
-				$feed = get_bloginfo( 'rss2_url' ) . "?post_type=$post_type";
-			}
-			printf( __( '<link rel="%1$s" type="%2$s" href="%3$s" />' ), 'alternate', 'application/rss+xml', $feed );
-		}
-	}
-
-	public function register_shortcode() {
-		add_shortcode( 'jm-breaking-news', [ $this, 'breaking_news_shortcode' ] );
-	}
-
-	public function breaking_news_shortcode( $atts ) {
-		$html = '';
+		$html                  = '';
 		$jm_breaking_news_args = [
-			'post_type'      => 'jm_breaking_news',
-			'posts_per_page' => 1,
+			'post_type'         => 'jm_breaking_news',
+			'posts_per_page'    => 1,
 		];
-		$jm_breaking_news = new WP_Query($jm_breaking_news_args);
+		$jm_breaking_news      = new WP_Query( $jm_breaking_news_args );
+
 		if ( $jm_breaking_news->have_posts() ) :
 			while ( $jm_breaking_news->have_posts() ) :
 				$jm_breaking_news->the_post();
@@ -96,6 +44,7 @@ class JM_Breaking_News_Public {
 				$post_time    = strtotime( get_the_date( 'r' ) );
 				$difference   = ( $current_time - $post_time ) / ( 60 * 60 );
 				$limit        = get_post_meta( get_the_ID(), 'jm_breaking_news_limit', true );
+
 				if ( 1 === get_post_meta( get_the_ID(), 'jm_breaking_news_target', true ) ) {
 					$target = 'target="_blank"';
 				} else {
@@ -126,8 +75,7 @@ class JM_Breaking_News_Public {
 				} else {
 					$news_text_color_style = '';
 				}
-				$use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
-				if ( $difference < $limit || false === $use_limit ) {
+				if ( $difference < $limit ) {
 					$html .= '<section class="breaking-news-box">';
 					$html .= '<div class="breaking-news-left" ' . $style . '>';
 					$html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
@@ -143,15 +91,13 @@ class JM_Breaking_News_Public {
 				}
 			endwhile;
 		endif;
+
 		wp_reset_postdata();
 
-		return $html;
-	}
+		echo $html;
 
-	function register_widget() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/breaking-news-widget.php';
+		echo $after_widget;
 
-		register_widget( 'JM_Breaking_News_Widget' );
 	}
 
 }
