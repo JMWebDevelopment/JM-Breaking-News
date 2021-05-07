@@ -1,0 +1,1 @@
+import './breaking-news-block';

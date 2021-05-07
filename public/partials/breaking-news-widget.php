@@ -8,7 +8,6 @@
  * @package JM Breaking News
  * @version 1.9
  */
-namespace JM_Breaking_News;
 
 class JM_Breaking_News_Widget extends WP_Widget {
 
