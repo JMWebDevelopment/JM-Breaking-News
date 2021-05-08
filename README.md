@@ -2,8 +2,9 @@
 Contributors: ArenaPigskin
 Tags: breaking news, banner
 Requires at least: 4.7
-Tested up to: 5.3.2
-Stable tag: 1.9.2
+Tested up to: 5.7.1
+Requires PHP: 7.0
+Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
