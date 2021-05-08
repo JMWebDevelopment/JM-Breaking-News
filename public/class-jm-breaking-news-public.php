@@ -63,10 +63,20 @@ class JM_Breaking_News_Public {
 
 	}
 
+	/**
+	 * Loads the breaking news function.
+	 *
+	 * @since 2.0.0
+	 */
 	public function load_breaking_news_function() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/breaking-news-function.php';
 	}
 
+	/**
+	 * Adds the breaking news custom post type to the RSS feed.
+	 *
+	 * @since 2.0.0
+	 */
 	public function breaking_news_feed() {
 		$post_types = array( 'jm_breaking_news' );
 		foreach ( $post_types as $post_type ) {
@@ -78,10 +88,23 @@ class JM_Breaking_News_Public {
 		}
 	}
 
+	/**
+	 * Registers the breaking news shortcode.
+	 *
+	 * @since 2.0.0
+	 */
 	public function register_shortcode() {
 		add_shortcode( 'jm-breaking-news', [ $this, 'breaking_news_shortcode' ] );
 	}
 
+	/**
+	 * Renders the JM Breaking News shortcode.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $atts      The attributes for the shortcode.
+	 * @return string          The HTML for the breaking news shortcode.
+	 */
 	public function breaking_news_shortcode( $atts ) {
 		$html = '';
 		$jm_breaking_news_args = [
@@ -148,6 +171,11 @@ class JM_Breaking_News_Public {
 		return $html;
 	}
 
+	/**
+	 * Loads and registers the breaking news widget.
+	 *
+	 * @since 2.0.0
+	 */
 	function register_widget() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/breaking-news-widget.php';
 

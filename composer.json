@@ -1,6 +1,6 @@
 {
-  "name": "jm-web-dev/jm-client-manager",
-  "description": "A WordPress plugin to manage all of my clients.",
+  "name": "jmwebdevelopment/jm-breaking-news",
+  "description": "Displays a breaking news banner, similar to that of CNN, with custom text and link on the webpage via a custom post type.",
   "type": "wordpress-plugin",
   "license": "GPL-2.0",
   "require-dev": {

@@ -1,4 +1,16 @@
 <?php
+/**
+ * File that displays the custom meta box for the breaking custom post type.
+ *
+ * PHP version 7.3
+ *
+ * @link       https://jacobmartella.com
+ * @since      2.0.0
+ *
+ * @package    JM_Breaking_News
+ * @subpackage JM_Breaking_News/admin/partials
+ */
+
 global $post;
 $values = get_post_custom( $post->ID );
 if ( isset( $values['jm_breaking_news_in_ex'] ) ) {

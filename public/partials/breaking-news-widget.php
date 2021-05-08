@@ -1,14 +1,23 @@
 <?php
 /**
- * breaking-news-widget.php
- *
  * File that creates the widget to display breaking news in the sidebar.
  *
- * @author Jacob Martella
- * @package JM Breaking News
- * @version 1.9
+ * PHP version 7.3
+ *
+ * @link       https://jacobmartella.com
+ * @since      2.0.0
+ *
+ * @package    JM_Breaking_News
+ * @subpackage JM_Breaking_News/public/partials
  */
 
+/**
+ * JM_Breaking_News_Widget creates a custom widget for breaking news.
+ *
+ * @package    JM_Breaking_News
+ * @since      2.0.0
+ * @access     public
+ */
 class JM_Breaking_News_Widget extends WP_Widget {
 
 	// Construct the widget.

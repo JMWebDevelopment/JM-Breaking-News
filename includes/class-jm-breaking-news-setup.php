@@ -23,7 +23,7 @@ class JM_Breaking_News_Setup {
 	/**
 	 * Creates the breaking new custom post type.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public function custom_post_type() {
 		$labels = [

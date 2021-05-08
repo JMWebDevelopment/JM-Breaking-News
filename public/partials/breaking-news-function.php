@@ -1,5 +1,17 @@
 <?php
 /**
+ * Holds the usable functions for the breaking news banner.
+ *
+ * PHP version 7.3
+ *
+ * @link       https://jacobmartella.com
+ * @since      2.0.0
+ *
+ * @package    JM_Breaking_News
+ * @subpackage JM_Breaking_News/public/partials
+ */
+
+/**
  * Returns the HTML for the breaking news banner
  *
  * Add '<?php echo jm_breaking_news(); ?>' anywhere in your theme to display the breaking news.

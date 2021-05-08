@@ -28,7 +28,7 @@ export default function prodCompress(done) {
     return pump(
         [
             src(`${prodThemePath}/**/*`),
-            gulpPlugins.zip(`${config.theme.slug}.zip`),
+            gulpPlugins.zip(`jm-breaking-news.zip`),
             dest(path.normalize(`${prodThemePath}/../`))
         ],
 		done

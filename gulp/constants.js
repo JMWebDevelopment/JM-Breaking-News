@@ -40,13 +40,13 @@ export const PHPCSOptions = {
 // Theme config name fields and their defaults
 export const nameFieldDefaults = {
 	author        : 'Jacob Martella',
-	PHPNamespace  : 'JM_Client_Manager',
-	slug          : 'jm-client-manager',
-	name          : 'JM Client Manager',
-	underscoreCase: 'jm_client_manager',
-	constant      : 'JM_CLIENT_MANAGER',
-	camelCase     : 'JmClientManager',
-	camelCaseVar  : 'jmClientManager',
+	PHPNamespace  : 'JM_Breaking_News',
+	slug          : 'jm-breaking-news',
+	name          : 'JM Breaking News',
+	underscoreCase: 'jm_breaking_news',
+	constant      : 'JM_BREAKING_NEWS',
+	camelCase     : 'JmBreakingNews',
+	camelCaseVar  : 'jmBreakingNews',
 };
 
 // Project paths

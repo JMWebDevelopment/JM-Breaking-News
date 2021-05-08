@@ -13,6 +13,8 @@
 
 namespace JM_Breaking_News;
 
+use WP_Query;
+
 /**
  * Runs the admin side.
  *
@@ -70,9 +72,31 @@ class JM_Breaking_News_Admin {
 		if ( 'jm_breaking_news' === $typenow ) {
 			wp_enqueue_script( 'wp-color-picker' );
 			wp_enqueue_script( 'jm-breaking-news-show-hide', plugin_dir_url( __FILE__ ) . 'js/show-hide-fields.min.js', [ 'jquery' ], $this->version, 'all' );
+
+			if ( get_post_meta( get_the_ID(), 'jm_breaking_news_internal_link', true ) ) {
+				$selected = get_post_meta( get_the_ID(), 'jm_breaking_news_internal_link', true );
+			} else {
+				$selected = '';
+			}
+			$args = [
+				'rest_url'      => get_home_url() . '/wp-json/',
+				'selected_post' => $selected,
+			];
+			wp_enqueue_script( 'jm_breaking_news_load_posts_script', plugin_dir_url( __FILE__ ) . 'js/breaking-news-load-posts.min.js', [ 'jquery' ], $this->version, 'all' );
+			wp_localize_script( 'jm_breaking_news_load_posts_script', 'jmloadposts', $args );
 		}
 	}
 
+	/**
+	 * Displays help text in the contextual menu.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string    $contextual_help      The incoming text for contextual help.
+	 * @param int       $screen_id               The id of the current screen.
+	 * @param WP_Screen $screen            The current screen.
+	 * @return string                      The new contextual help screen text.
+	 */
 	public function contextual_help( $contextual_help, $screen_id, $screen ) {
 		if ( ( 'jm_breaking_news' === $screen->id ) || ( 'edit-jm_breaking_news' === $screen->id ) ) {
 			$contextual_help  = '<h2>' . __( 'Breaking News Help', 'jm-breaking-news' ) . '</h2>';
@@ -90,14 +114,31 @@ class JM_Breaking_News_Admin {
 		return $contextual_help;
 	}
 
+	/**
+	 * Adds in the meta box for the breaking news custom post type.
+	 *
+	 * @since 2.0.0
+	 */
 	public function add_meta_box() {
 		add_meta_box( 'jm-breaking-news-meta', __( 'Breaking News Info', 'jm-breaking-news' ), [ $this, 'create_meta_box' ], 'jm_breaking_news', 'normal', 'default' );
 	}
 
+	/**
+	 * Loads in the custom meta box for the custom post type.
+	 *
+	 * @since 2.0.0
+	 */
 	public function create_meta_box() {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/breaking-news-meta-box.php';
 	}
 
+	/**
+	 * Saves the data in the meta box for the breaking news custom post type.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param int $post_id      The ID of the breaking news post.
+	 */
 	public function save_meta_box( $post_id ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
@@ -151,6 +192,14 @@ class JM_Breaking_News_Admin {
 		}
 	}
 
+	/**
+	 * Checks the color value to make sure that it is a hex color code.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param string $value      The entered color value.
+	 * @return boolean           Whether the value is a hex color code or not.
+	 */
 	public function check_color( $value ) {
 		if ( preg_match( '/^#[a-f0-9]{6}$/i', $value ) || preg_match( '/^[a-f0-9]{6}$/i', $value ) ) {
 			return true;
@@ -159,6 +208,11 @@ class JM_Breaking_News_Admin {
 		return false;
 	}
 
+	/**
+	 * Adds in the rest API data for a breaking news post.
+	 *
+	 * @since 2.0.0
+	 */
 	public function add_rest_data() {
 		register_rest_field(
 			'jm_breaking_news',
@@ -278,8 +332,156 @@ class JM_Breaking_News_Admin {
 		);
 	}
 
+	/**
+	 * Gets the value for a custom field.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param WP_Post         $post         The current post.
+	 * @param string          $field_name   The name of the field.
+	 * @param WP_REST_Request $request      The REST request.
+	 */
 	public function get_field( $post, $field_name, $request ) {
 		return get_post_meta( get_the_ID(), $field_name, true );
+	}
+
+	/**
+	 * Loads the block editor scripts and styles.
+	 *
+	 * @since 2.0.0
+	 */
+	public function blocks_editor_scripts() {
+		$block_path = '../public/js/editor.blocks.js';
+
+		wp_enqueue_style(
+			'jm-breaking-news-blocks-editor-css',
+			plugin_dir_url( __FILE__ ) . 'css/block.min.css'
+		);
+
+		wp_enqueue_script(
+			'breaking-news-blocks-js',
+			plugins_url( $block_path, __FILE__ ),
+			[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api', 'wp-editor' ],
+			filemtime( plugin_dir_path(__FILE__) . $block_path )
+		);
+
+		wp_localize_script(
+			'breaking-news-blocks-js',
+			'jm_breaking_news_globals',
+			[
+				'rest_url'  => esc_url( rest_url() ),
+				'nonce'     => wp_create_nonce( 'wp_rest' ),
+			]
+		);
+	}
+
+	/**
+	 * Loads the front-end styles for the block.
+	 *
+	 * @since 2.0.0
+	 */
+	public function block_scripts() {
+		$style_path = '/public/css/blocks.style.css';
+		wp_enqueue_style(
+			'jm-breaking-news-block-css',
+			plugins_url( $style_path, __FILE__ )
+		);
+	}
+
+	/**
+	 * Renders the breaking news block on the front end.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $attributes      The attributes for the block.
+	 * @return string                The HTML for the block.
+	 */
+	public function rendered_jm_breaking_news( $attributes ) {
+		$html                  = '';
+		$jm_breaking_news_args = [
+			'post_type'         => 'jm_breaking_news',
+			'posts_per_page'    => 1,
+		];
+		$jm_breaking_news      = new WP_Query( $jm_breaking_news_args );
+
+		if ( $jm_breaking_news->have_posts() ) :
+			while ( $jm_breaking_news->have_posts() ) :
+				$jm_breaking_news->the_post();
+				$current_time = strtotime( current_time( 'mysql' ) );
+				$post_time    = strtotime( get_the_date( 'r' ), get_the_ID() );
+				$difference   = ( $current_time - $post_time ) / ( 60 * 60 );
+				$limit        = get_post_meta( get_the_ID(), 'jm_breaking_news_limit', true );
+				if ( 1 === get_post_meta( get_the_ID(), 'jm_breaking_news_target', true ) ) {
+					$target = 'target="_blank"';
+				} else {
+					$target = '';
+				}
+				if ( 1 === get_post_meta( get_the_ID(), 'jm_breaking_news_in_ex', true ) ) {
+					$link = get_post_meta( get_the_ID(), 'jm_breaking_news_internal_link', true );
+				} else {
+					$link = get_post_meta( get_the_ID(), 'jm_breaking_news_link', true );
+				}
+				if ( get_post_meta( get_the_ID(), 'jm_breaking_news_color', true ) ) {
+					$style = 'style="background-color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_color', true ) . ';"';
+				} else {
+					$style = '';
+				}
+				if ( get_post_meta( get_the_ID(), 'jm_breaking_news_background_color', true ) ) {
+					$background_color_style = 'style="background-color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_background_color', true ) . ';"';
+				} else {
+					$background_color_style = '';
+				}
+				if ( get_post_meta( get_the_ID(), 'jm_breaking_news_text_color', true ) ) {
+					$text_color_style = 'style="color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_text_color', true ) . ';"';
+				} else {
+					$text_color_style = '';
+				}
+				if ( get_post_meta( get_the_ID(), 'jm_breaking_news_news_text_color', true ) ) {
+					$news_text_color_style = 'style="color:' . get_post_meta( get_the_ID(), 'jm_breaking_news_news_text_color', true ) . ';"';
+				} else {
+					$news_text_color_style = '';
+				}
+				$use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
+				if ( $difference < $limit || false === $use_limit ) {
+					$html .= '<section class="breaking-news-box">';
+					$html .= '<div class="breaking-news-left" ' . $style . '>';
+					$html .= '<h2 class="breaking-news-left-h2" ' . $text_color_style . '>' . __( 'Breaking News', 'jm-breaking-news' ) . '</h2>';
+					$html .= '</div>';
+					$html .= '<div class="breaking-news-right" ' . $background_color_style . '>';
+					if ( $link != '' ) {
+						$html .= '<p class="breaking-news-right-h2" ' . $news_text_color_style . '><a href="' . $link . '" ' . $target . '>' . get_the_title() . '</a></p>';
+					} else {
+						$html .= '<p class="breaking-news-right-h2" ' . $news_text_color_style . '>' . get_the_title() . '</p>';
+					}
+					$html .= '</div>';
+					$html .= '</section>';
+				}
+			endwhile;
+		endif;
+		wp_reset_postdata();
+
+		return $html;
+	}
+
+	/**
+	 * Checks to make sure Gutenberg is active or the WP version is greater than 5.0.
+	 *
+	 * @since 2.0.0
+	 */
+	public function check_gutenberg() {
+		if ( ! function_exists( 'register_block_type' ) ) {
+			// Block editor is not available.
+			return;
+		}
+
+		add_action( 'enqueue_block_assets', [ $this, 'block_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'blocks_editor_scripts' ] );
+		register_block_type(
+			'jm-breaking-news/jm-breaking-news',
+			[
+				'render_callback' => [ $this, 'rendered_jm_breaking_news' ],
+			]
+		);
 	}
 
 }

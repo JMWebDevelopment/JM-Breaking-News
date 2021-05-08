@@ -1,78 +1,71 @@
 # Changelog
 
-All of the changes for the JM Client Manager are stored here.
+## 2.0
+- Refactor the entire plugin to use an object-oriented programming paradigm.
+- Upped the lowest PHP version supported to 7.0.
+- Tested to work with WordPress 5.7.1.
 
-## [1.7.0] - 2020-09-15
+## 1.9.2
+- Actually fixed issue with `is_plugin_active` function not being called correctly.
 
-### Added
-- Added Google Ads tab to Client Manager analytics page.
+## 1.9.1
+- Fixed issue with `is_plugin_active` function not being called correctly.
 
-## [1.6.0] - 2020-08-15
+## 1.9
+- Added Gutenberg block to show the breaking news banner in a post.
+- Switched the CSS to use flexbox for better display of the banner.
+- Added a Gulp process for better export of the plugin.
+- Tested with WordPress 5.3.
 
-### Added
-- Added changes to accomodate the community subsite.
+## 1.8.2
+- Tested with WordPress 4.9.
 
-## [1.5.0] - 2020-07-30
+## 1.8.1
+- Changed to load internal posts to link over to the WP REST API to avoid fatal errors.
+- Changed required WordPress version to 4.7.
 
-### Added
-- Added responsive styling for Google Data Studio reports.
+## 1.8
+- Added color options for the background of the body section and the text.
+- Tested to work with WordPress 4.8.
 
-## [1.4.1] - 2020-07-15
+## 1.7
+- Tested to work with WordPress 4.7.
 
-### Fixed
-- Updated the id for the Freelancing form to match the live website.
+## 1.6
+- Added: Breaking News shortcode to put a breaking news banner inside a post.
+- Tested to work with WordPress 4.6.
 
-## [1.4.0] - 2020-07-15
+## 1.5
+- Added: Breaking News widget that allows users to display the breaking news banner in the sidebar.
+- Added: Translations for French, German, Italian, Russian and Spanish.
+- Tested to work with WordPress 4.5.
 
-### Added
-- Added in a calendar dashboard widget.
-- Added in a financials dashboard widget.
-- Added in a tasks dashboard widget.
-- Added in a analytics dashboard widget.
+## 1.4
+- Added option to change background color of "Breaking News" half of the banner.
+- Tested to work with WordPress 4.4
 
-## [1.3.0] - 2020-06-30
+## 1.3.1
+- Removed 'http:' from the functions to enqueue the Google fonts
 
-### Added
-- Added in ability to track expenses inside the client manager plugin.
-- Added a back button for the tasks section.
+## 1.3
+- Tested to work with WordPress 4.3
+- Fixed vertical margin for "Breaking News" text to even it out.
+- Added a line-height of 1.2 for text on the right side to even it out.
 
-### Fixed
-- Visual testing on local and staging.
+## 1.2.1
+- Fixes: Issue with the JavaScript file for the breaking news post type admin area not being included in the plugin.
 
-## [1.2.0] - 2020-06-15
+## 1.2
+- Added: Option for users to select whether the link will be internal or external.
+- Added: A select option of posts for the user to select if it's an internal link.
 
-### Added
-- Added new reports for Analytics, Search Console and YouTube.
+## 1.1
+- Added: default value of 1 for the time limit.
+- Added: wp_reset_query at the end of the jm_breaking_news function to keep the banner from interfering with the page query.
+- Changed: the left side font to Oswald.
+- Changed: the right side font to Lato.
+- Changed: the left side background to #C42B2B.
+- Changed: the right side background to #252525.
 
-### Fixed
-- Issue with task comments being assigned to the first task instead of their respective task.
-- Made the tasks page three columns on wide screens.
-
-## [1.1.1] - 2020-05-30
-
-### Fixed
-- Updated the ids for the Gravity Forms to match the live website.
-
-## [1.1.0] - 2020-05-30
-
-### Added
-- Added in an options page.
-- Added in a page to show different analytics from Google Analytics, Search Console and YouTube.
-- Added in support for events.
-
-### Fixed
-- Fixed PHP errors on the clients and contacts pages.
-
-## [1.0.1] - 2020-05-17
-
-### Fixed
-- Fixed issue with not being able to view a single task.
-- Fixed issue with not being able to view a single invoice.
-- Fixed issue with amount doubling when updating an invoice.
-- Fixed issue with invoice paid date not showing up.
-- Fixed issue with invoice items check marks not showing up.
-
-## [1.0.0] - 2020-05-17
-
-### Added
-- Add in the first version of the plugin.
+## 1.0
+- Initial Release

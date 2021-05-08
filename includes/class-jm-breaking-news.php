@@ -114,6 +114,7 @@ class JM_Breaking_News {
 	 */
 	private function define_setup_hooks() {
 		$plugin_setup = new JM_Breaking_News_Setup( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'init', $plugin_setup, 'custom_post_type' );
 	}
 
 	/**
@@ -129,6 +130,8 @@ class JM_Breaking_News {
 		$this->loader->add_action( 'admin_menu', $admin, 'add_meta_box' );
 		$this->loader->add_action( 'save_post', $admin, 'save_meta_box' );
 		$this->loader->add_action( 'rest_api_init', $admin, 'add_rest_data' );
+		//$this->loader->add_action( 'admin_init', $admin, 'check_gutenberg' );
+		$this->loader->add_action( 'init', $admin, 'check_gutenberg' );
 	}
 
 	/**

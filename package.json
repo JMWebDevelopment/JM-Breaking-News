@@ -1,14 +1,14 @@
 {
-  "name": "jm-client-manager",
-  "version": "1.0.0",
-  "description": "A WordPress plugin to manage all of my clients.",
+  "name": "jm-breaking-news",
+  "version": "2.0.0",
+  "description": "Displays a breaking news banner, similar to that of CNN, with custom text and link on the webpage via a custom post type.",
   "author": "Jacob Martella",
   "license": "GPL-3.0",
-  "main": "jm-client-manager.php",
+  "main": "jm-breaking-news.php",
   "homepage": "https://jacobmartella.com",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/JacobMartellaWebDevelopment/jacob-martella.git"
+    "url": "git+https://github.com/JMWebDevelopment/JM-Breaking-News.git"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -113,7 +113,7 @@
   },
   "babel": {
     "presets": [
-      "@wordpress/default"
+      "@babel/env"
     ]
   },
   "eslintConfig": {
