@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0
+- Refactor the entire plugin to use an object-oriented programming paradigm.
+- Upped the lowest PHP version supported to 7.0.
+- Tested to work with WordPress 5.7.1.
+
 ## 1.9.2
 - Actually fixed issue with `is_plugin_active` function not being called correctly.
 

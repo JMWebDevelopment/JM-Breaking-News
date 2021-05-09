@@ -2,8 +2,9 @@
 Contributors: ArenaPigskin
 Tags: breaking news, banner
 Requires at least: 4.7
-Tested up to: 5.3.2
-Stable tag: 1.9.2
+Tested up to: 5.7.1
+Requires PHP: 7.0
+Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -28,6 +29,11 @@ The banner has a width of 100%, so it will fit into any size container; however,
 2. The breaking news banner in action on the web site.
 
 == Changelog ==
+= 2.0 =
+- Refactor the entire plugin to use an object-oriented programming paradigm.
+- Upped the lowest PHP version supported to 7.0.
+- Tested to work with WordPress 5.7.1.
+
 = 1.9.2 =
 - Actually fixed issue with `is_plugin_active` function not being called correctly.
 
