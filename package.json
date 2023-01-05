@@ -26,7 +26,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.11",
     "browser-sync-webpack-plugin": "^2.3.0",
     "cgb-scripts": "1.9.2",
     "classnames": "^2.2.5",
