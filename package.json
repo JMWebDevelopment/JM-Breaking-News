@@ -150,6 +150,6 @@
     "@wordpress/babel-preset-default": "^5.2.2",
     "isomorphic-fetch": "^3.0.0",
     "moment": "^2.29.4",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.11.1"
   }
 }
