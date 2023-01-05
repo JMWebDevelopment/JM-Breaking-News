@@ -105,8 +105,8 @@
     "sass-loader": "^11.0.1",
     "select2": "^4.0.6-rc.1",
     "style-loader": "^0.19.1",
-    "stylelint": "^9.10.1",
-    "stylelint-config-wordpress": "^13.1.0",
+    "stylelint": "^14.16.1",
+    "stylelint-config-wordpress": "^17.0.0",
     "vinyl": "^2.2.0",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.7.0"
