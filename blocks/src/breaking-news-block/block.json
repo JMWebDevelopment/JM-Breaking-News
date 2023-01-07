@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "jm-breaking-news/jm-breaking-news",
+	"version": "0.1.0",
+	"title": "Breaking News Post",
+	"category": "widgets",
+	"description": "A breaking news banner you can add to your website.",
+  "attributes": {
+    "getPost": {
+      "type": "boolean",
+      "default": false
+    },
+    "hasPost": {
+      "type": "boolean",
+      "default": false
+    },
+    "posts": {
+      "type": "array",
+      "default": []
+    }
+  },
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"__experimentalLayout": true
+	},
+	"textdomain": "jm-breaking-news",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

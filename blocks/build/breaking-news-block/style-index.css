@@ -1,0 +1,80 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/breaking-news-block/style.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-jm-breaking-news-jm-breaking-news .breaking-news-box {
+  width: 100%;
+  margin: 0 auto 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.wp-block-jm-breaking-news-jm-breaking-news .breaking-news-box .breaking-news-left {
+  width: 30%;
+  background-color: #C42B2B;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 15px 10px;
+}
+.wp-block-jm-breaking-news-jm-breaking-news .breaking-news-box .breaking-news-left .breaking-news-left-h2 {
+  font-family: "Oswald";
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+.wp-block-jm-breaking-news-jm-breaking-news .breaking-news-box .breaking-news-right {
+  width: 70%;
+  background-color: #262626;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 15px 10px;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+}
+.wp-block-jm-breaking-news-jm-breaking-news .breaking-news-box .breaking-news-right .breaking-news-right-h2 {
+  font-family: "Lato";
+  font-size: 28px;
+  color: #FFFFFF;
+  margin: 0;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.wp-block-jm-breaking-news-jm-breaking-news .breaking-news-box .breaking-news-right .breaking-news-right-h2 a {
+  color: #FFFFFF;
+  margin-bottom: 0 !important;
+}
+.wp-block-jm-breaking-news-jm-breaking-news .breaking-news-box .breaking-news-right .breaking-news-right-h2 a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
