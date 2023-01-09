@@ -351,28 +351,8 @@ class JM_Breaking_News_Admin {
 	 * @since 2.0.0
 	 */
 	public function blocks_editor_scripts() {
-		$block_path = '../public/js/editor.blocks.js';
-
-		wp_enqueue_style(
-			'jm-breaking-news-blocks-editor-css',
-			plugin_dir_url( __FILE__ ) . 'css/block.min.css'
-		);
-
-		wp_enqueue_script(
-			'breaking-news-blocks-js',
-			plugins_url( $block_path, __FILE__ ),
-			[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-api', 'wp-editor' ],
-			filemtime( plugin_dir_path(__FILE__) . $block_path )
-		);
-
-		wp_localize_script(
-			'breaking-news-blocks-js',
-			'jm_breaking_news_globals',
-			[
-				'rest_url'  => esc_url( rest_url() ),
-				'nonce'     => wp_create_nonce( 'wp_rest' ),
-			]
-		);
+		wp_enqueue_style( 'jm-breaking-news-lato', '//fonts.googleapis.com/css?family=Lato:100,300,400,700', [], $this->version, 'all' );
+		wp_enqueue_style( 'jm-breaking-news-oswald', '//fonts.googleapis.com/css?family=Oswald:400,700,300', [], $this->version, 'all' );
 	}
 
 	/**
@@ -473,15 +453,7 @@ class JM_Breaking_News_Admin {
 			// Block editor is not available.
 			return;
 		}
-
-		add_action( 'enqueue_block_assets', [ $this, 'block_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'blocks_editor_scripts' ] );
-		register_block_type(
-			'jm-breaking-news/jm-breaking-news',
-			[
-				'render_callback' => [ $this, 'rendered_jm_breaking_news' ],
-			]
-		);
 	}
 
 }
