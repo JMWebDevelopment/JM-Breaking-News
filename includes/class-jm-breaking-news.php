@@ -72,6 +72,7 @@ class JM_Breaking_News {
 		$this->define_setup_hooks();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_block_hooks();
 
 	}
 
@@ -86,6 +87,7 @@ class JM_Breaking_News {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-jm-breaking-news-setup.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-jm-breaking-news-admin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-jm-breaking-news-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/class-jm-breaking-news-blocks.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-jm-breaking-news-database-updates.php';
 
 		require_once plugin_dir_path( __FILE__ ) . 'class-jm-breaking-news-loader.php';
@@ -145,6 +147,16 @@ class JM_Breaking_News {
 		$this->loader->add_action( 'wp_head', $public, 'breaking_news_feed' );
 		$this->loader->add_action( 'init', $public, 'register_shortcode' );
 		$this->loader->add_action( 'widgets_init', $public, 'register_widget' );
+	}
+
+	/**
+	 * Runs all of the admin hooks for the plugin.
+	 *
+	 * @since 2.0.0
+	 */
+	private function define_block_hooks() {
+		$blocks = new JM_Breaking_News_Blocks( $this->get_version() );
+		$this->loader->add_action( 'init', $blocks, 'create_blocks' );
 	}
 
 	/**
