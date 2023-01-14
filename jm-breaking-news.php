@@ -3,7 +3,7 @@
  * Plugin Name:       JM Breaking News
  * Plugin URI:        http://www.jacobmartella.com/jm-breaking-news/
  * Description:       Displays a breaking news banner, similar to that of CNN, with custom text and link on the webpage via a custom post type.
- * Version:           2.0.0
+ * Version:           2.1.0
  * Author:            Jacob Martella
  * Author URI:        https://jacobmartella.com
  * Text Domain:       jm-breaking-news

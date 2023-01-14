@@ -65,7 +65,7 @@ class JM_Breaking_News {
 	public function __construct() {
 
 		$this->plugin_slug = 'jm-breaking-news';
-		$this->version     = '2.0.0';
+		$this->version     = '2.1.0';
 
 		$this->load_dependencies();
 		$this->set_locale();

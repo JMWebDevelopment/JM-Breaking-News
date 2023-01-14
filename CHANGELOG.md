@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1
+- Update the block to use the block.json file and other new features.
+
 ## 2.0
 - Refactor the entire plugin to use an object-oriented programming paradigm.
 - Upped the lowest PHP version supported to 7.0.
