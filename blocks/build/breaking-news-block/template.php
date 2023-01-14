@@ -1,15 +1,15 @@
 <?php
 $jm_breaking_news_args = [
-	'post_type'         => 'jm_breaking_news',
-	'posts_per_page'    => 1,
+	'post_type'      => 'jm_breaking_news',
+	'posts_per_page' => 1,
 ];
-$jm_breaking_news      = new WP_Query( $jm_breaking_news_args );
+$jm_breaking_news = new WP_Query($jm_breaking_news_args);
 
 if ( $jm_breaking_news->have_posts() ) {
 	while ( $jm_breaking_news->have_posts() ) {
 		$jm_breaking_news->the_post();
 		$current_time = strtotime( current_time( 'mysql' ) );
-		$post_time    = strtotime( get_the_date( 'r' ), get_the_ID() );
+		$post_time    = strtotime( get_the_date( 'r' ) );
 		$difference   = ( $current_time - $post_time ) / ( 60 * 60 );
 		$limit        = get_post_meta( get_the_ID(), 'jm_breaking_news_limit', true );
 		if ( 1 === get_post_meta( get_the_ID(), 'jm_breaking_news_target', true ) ) {
@@ -45,7 +45,7 @@ if ( $jm_breaking_news->have_posts() ) {
 		$use_limit = apply_filters( 'jm_breaking_news_use_time_limit', true );
 		if ( $difference < $limit || false === $use_limit ) {
 			?>
-			<div <?php echo get_block_wrapper_attributes(); ?>>
+			<section <?php echo get_block_wrapper_attributes(); ?>>
 				<div class="breaking-news-box">
 					<div class="breaking-news-left" <?php echo wp_kses_post( $style ); ?>>
 					<h2 class="breaking-news-left-h2" <?php echo wp_kses_post( $text_color_style ); ?>><?php esc_html_e( 'Breaking News', 'jm-breaking-news' ); ?></h2>
@@ -54,20 +54,19 @@ if ( $jm_breaking_news->have_posts() ) {
 					<?php
 					if ( $link != '' ) {
 						?>
-						<p class="breaking-news-right-h2" <?php echo wp_kses_post( $news_text_color_style ); ?>><a href="<?php echo esc_url( $link ); ?>" <?php echo wp_kses_post( $target ); ?>><?php the_title(); ?></a></p>
+						<h2 class="breaking-news-right-h2" <?php echo wp_kses_post( $news_text_color_style ); ?>><a href="<?php echo esc_url( $link ); ?>" <?php echo wp_kses_post( $target ); ?>><?php the_title(); ?></a></h2>
 						<?php
 					} else {
 						?>
-						<p class="breaking-news-right-h2" <?php echo wp_kses_post( $news_text_color_style ); ?>><?php the_title(); ?></p>
+						<h2 class="breaking-news-right-h2" <?php echo wp_kses_post( $news_text_color_style ); ?>><?php the_title(); ?></h2>
 						<?php
 					}
 					?>
 					</div>
 				</div>
-			</div>
+			</section>
 			<?php
 		}
 	}
 }
 wp_reset_postdata();
-
