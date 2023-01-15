@@ -1,0 +1,64 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-jm-breaking-news-jm-breaking-news {
+
+	.breaking-news-box {
+		width: 100%;
+		margin: 0 auto 10px;
+		display: flex;
+		flex-wrap: wrap;
+
+		.breaking-news-left {
+			width: 30%;
+			background-color: #C42B2B;
+			text-align: center;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 15px 10px;
+
+			& .breaking-news-left-h2 {
+				font-family: 'Oswald';
+				font-size: 28px;
+				font-weight: 700;
+				text-transform: uppercase;
+				color: #FFFFFF;
+				margin: 0;
+			}
+		}
+
+		.breaking-news-right {
+			width: 70%;
+			background-color: #262626;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 15px 10px;
+			margin-block-start: 0;
+
+			.breaking-news-right-h2 {
+				font-family: 'Lato';
+				font-size: 28px;
+				color: #FFFFFF;
+				margin: 0;
+				font-weight: 300;
+				line-height: 1.2;
+
+				a {
+					color: #FFFFFF;
+					margin-bottom: 0 !important;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+}
